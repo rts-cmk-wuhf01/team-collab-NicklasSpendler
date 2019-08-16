@@ -1,0 +1,27 @@
+{
+  "name": "team-collab-NicklasSpendler",
+  "version": "1.0.0",
+  "description": "Opgavens formål er at få afprøvet udvikling af en express baseret hjemmeside, via team arbejde.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rts-cmk-wuhf01/team-collab-NicklasSpendler.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rts-cmk-wuhf01/team-collab-NicklasSpendler/issues"
+  },
+  "homepage": "https://github.com/rts-cmk-wuhf01/team-collab-NicklasSpendler#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "date-and-time": "^0.9.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1"
+  }
+}
