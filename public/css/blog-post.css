@@ -18,6 +18,11 @@ a{
     border-radius: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    min-height: 16em;
+    margin-bottom: 1em;
+}
+.blog-post__header{
+    margin: 0;
 }
 .blog-post__img{
     width: 100%;

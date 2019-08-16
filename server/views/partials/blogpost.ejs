@@ -12,17 +12,21 @@
 <body>
 
     <div class="wrapper">
-        <div class="blog-post">
+        <% dummyBlogPosts.forEach(currentPost => { %>
+            
+            <div class="blog-post">
             <div class="blog-post__left">
-                <h1 class="blog-post__header">Blog post Title</h1>
-                <p class="blog-post__textcontent">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, alias dicta cumque sed dolor obcaecati necessitatibus accusantium vel magnam, repudiandae adipisci nobis sit corrupti dolorum harum! Reprehenderit dicta cum dolores.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, alias dicta cumque sed dolor obcaecati necessitatibus accusantium vel magnam, repudiandae adipisci nobis sit corrupti dolorum harum! Reprehenderit dicta cum dolores.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, alias dicta cumque sed dolor obcaecati necessitatibus accusantium vel magnam, repudiandae adipisci nobis sit corrupti dolorum harum! Reprehenderit dicta cum dolores.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, alias dicta cumque sed dolor obcaecati necessitatibus accusantium vel magnam, repudiandae adipisci nobis sit corrupti dolorum harum! Reprehenderit dicta cum dolores.</p>
+                <h1 class="blog-post__header"><%- currentPost.blog_title%></h1>
+                <p class="blog-post__textcontent"><%- currentPost.blog_contentText%></p>
 
                 <a href="#" class="blog-post__button">Read More</a>
             </div>
             <div class="blog-post__right">
-                <img class="blog-post__img" src="/img/dummyimg.jpg" alt="">
+                <img class="blog-post__img" src="<%- currentPost.blog_imgSrc %>" alt="">
             </div>
         </div>
+
+        <% }); %>
     </div>
 
 </body>
