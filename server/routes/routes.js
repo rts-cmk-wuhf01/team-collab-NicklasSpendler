@@ -17,7 +17,11 @@ module.exports = (app) =>{
         res.render("home",{
             "dummyBlogPosts": dummyBlogPosts
         })
-    })
+    });
+  
+    app.get('/header', async (req, res, next) => {
+        res.render("partials/header");
+    });
 
     app.get('/store', async (req,res) =>{
         res.render("store")
@@ -25,5 +29,6 @@ module.exports = (app) =>{
     app.get('/contact', async (req,res) =>{
         res.render("contact")
     })
+
 
 }
