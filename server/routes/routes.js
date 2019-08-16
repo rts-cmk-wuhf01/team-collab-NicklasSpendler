@@ -10,8 +10,6 @@ module.exports = (app) =>{
     app.get('/header', async (req, res, next) => {
         res.render("partials/header");
     });
-        res.render("home")
-    })
 
     app.get('/store', async (req,res) =>{
         res.render("store")
