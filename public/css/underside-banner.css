@@ -14,4 +14,18 @@ header {
 .banner {
 	height: 340px;
 	background-image: url(https://www.wallpapermaiden.com/wallpaper/10588/download/1600x900/fantasy-landscape-mountain-snow-illustration-concept-art-clouds.jpg);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.pagePath {
+	display: flex;
+	flex-direction: row;
+}
+
+.pathItem::after {
+	content: "/";
+	padding: 0 4px 0 4px;
 }
