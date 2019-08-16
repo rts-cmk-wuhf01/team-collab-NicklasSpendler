@@ -2,19 +2,19 @@
 	margin: 0;
 }
 
-body {
-	height: 100vh;
-	background-image: url();
-}
-
 header {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	padding: 0 75px 0 75px;
 	height: 110px;
-	background-color: rgba(31, 29, 52, .75);
+	background-color: rgba(31, 29, 52, .60);
 	align-items: center;
+	box-shadow: 2px 0 15px 2px black;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .logo {
@@ -44,9 +44,10 @@ header {
 }
 
 #searchIcon {
-	margin: 0 16px 0 0;
+	margin: 0 24px 0 0;
 	color: white;
 	font-size: 24px;
+	padding: 8px 0 0 0;
 }
 
 .join {
