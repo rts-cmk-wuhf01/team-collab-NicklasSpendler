@@ -1,0 +1,22 @@
+.hometopbanner {
+    background: url(../img/homebanner.jpg) no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hometopbanner__content {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hometopbanner__smallheader{
+    margin: 0;
+    font-size: 1.7rem
+}
+.hometopbanner__bigheader{
+    margin: 0;
+    font-size: 3.5rem;
+}
