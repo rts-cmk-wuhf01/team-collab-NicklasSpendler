@@ -23,6 +23,10 @@ module.exports = (app) =>{
         res.render("partials/header");
     });
 
+    app.get('/subpage-banner', async (req, res, next) => {
+        res.render("partials/underside-banner");
+    });
+
     app.get('/store', async (req,res) =>{
         res.render("store")
     })
