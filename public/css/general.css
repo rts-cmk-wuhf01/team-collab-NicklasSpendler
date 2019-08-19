@@ -1,3 +1,6 @@
+:root{
+    --contentpadding: 0 18%;;
+}
 body{
     background-color: #1F1D33;
     margin: 0;
@@ -5,11 +8,38 @@ body{
     color: white;
 }
 .wrapper{
-    padding: 0 18%;
-
+    padding: var(--contentpadding)
 }
 
 a{
     text-decoration: none;
     color: inherit;
+}
+
+.button {
+	border: none;
+	padding: 13px 40px 13px 40px;
+	border-radius: 8px;
+	text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.button--gradient{
+    background-image: linear-gradient(to right, #5fc2dc, #00b1ed, #009bfc, #447dfc, #9051e6);
+    color: white;
+}
+.button--gradient:hover{
+    background-image: linear-gradient(to left, #5fc2dc, #00b1ed, #009bfc, #447dfc, #9051e6);
+    color: white;
+}
+.button--white{
+    color: #42CFD7;
+    background-color: white;
+}
+.button--white:hover{
+    background: #42CFD7;
+    color: white;
 }
