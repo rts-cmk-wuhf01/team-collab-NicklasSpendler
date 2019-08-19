@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="css/general.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/underside-banner.css">
+<link rel="stylesheet" href="css/contactform.css">
+
+<script src="https://kit.fontawesome.com/ab39bcca60.js"></script>
+
+<%- include("header")%>
+
+<%- include("underside-banner")%>
+
+ <div id="contactWrapper">
+
+	<h2 id="formTitle">Contact Information</h2>
+
+	<div id="contactInfo">
+		<p class="infoText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis fugiat porro deleniti explicabo soluta molestias modi, veritatis consequuntur pariatur exercitationem.</p>
+		<div class="infoItem">
+			<span class="infoIcon fas fa-phone"></span>
+			<p class="infoTitle">Phone</p>
+			<p class="infoContent">0-800-123-4567</p>
+		</div>
+		<div class="infoItem">
+			<span class="infoIcon fas fa-map-marker-alt"></span>
+			<p class="infoTitle">Location Address</p>
+			<p class="infoContent">698 katrine crossroad apt. 325, miami, usa</p>
+		</div>
+		<div class="infoItem">
+			<span class="infoIcon fas fa-envelope"></span>
+			<p class="infoTitle">e-mail address</p>
+			<p class="infoContent">indiega@solutions.com</p>
+		</div>
+
+	</div>
+
+	<form id="contactForm" autocomplete="off">
+		<input type="text" name="name" id="contactName" placeholder="Your name">
+		<input type="text" name="mail" id="contactMail" placeholder="Email address">
+		<input type="text" name="phone" id="contactPhone" placeholder="Phone number">
+		<input type="text" name="subject" id="contactSubject" placeholder="Subject">
+		<textarea name="message" id="contactMessage" placeholder="Your message..."></textarea>
+		<input type="submit" id="contactSubmit" value="Send message">
+	</form>
+
+</div>
+
+

@@ -31,6 +31,6 @@ module.exports = (app) =>{
         res.render("store")
     })
     app.get('/contact', async (req,res) =>{
-        res.render("contact")
+        res.render("partials/contactform")
     })
 }
