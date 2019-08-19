@@ -53,15 +53,11 @@ module.exports = (app) =>{
     });
 
     app.get('/store', async (req,res) =>{
-        res.render("store")
+        res.render("store", {
+            "dummyGridBoxes": dummyGridBoxes
+        })
     })
     app.get('/contact', async (req,res) =>{
         res.render("contact")
-    })
-
-    app.get('/grid-test', async (req,res) =>{
-        res.render("partials/gameGrid-single-box",{
-            "dummyGridBoxes": dummyGridBoxes
-        })
     })
 }
