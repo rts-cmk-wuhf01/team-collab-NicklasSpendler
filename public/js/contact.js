@@ -8,40 +8,46 @@ let message = contactForm.querySelector("#contactMessage");
 contactForm.addEventListener("submit", (event) => {
 	event.preventDefault();
 	
-	if(name.value != "") {
-		console.log(name.value);
+	if(name.value != "" && typeof name.value == NaN) {
 		name.value = "";
 	}
 	else {
 		alert(`The name field must be filled in!`);
+		name.value = "";
 	}
 	if(mail.value != "") {
-		console.log(mail.value);
 		mail.value = "";
 	}
 	else {
 		alert(`The mail field must be filled in!`);
+		mail.value = "";
 	}
-	if(phone.value != "" && typeof(phone.value) != NaN) {
-		console.log(phone.value);
-		phone.value = "";
+	if(phone.value != "") {
+		if(phone.value.length == 8) {
+			phone.value = "";
+		}
+		else {
+			alert(`The phone number must be 8 digits long`);
+			phone.value = "";
+		}
 	}
 	else {
 		alert(`The phone field must be filled in!`);
+		phone.value = "";
 	}
-	if(subject.value != "") {
-		console.log(subject.value);
+	if(subject.value != "" && typeof subject.value == NaN) {
 		subject.value = "";
 	}
 	else {
 		alert(`The subject field must be filled in!`);
+		subject.value = "";
 	}
-	if(message.value != "") {
-		console.log(message.value);
+	if(message.value != "" && typeof message.value == NaN) {
 		message.value = "";
 	}
 	else {
 		alert(`The message field must be filled in!`);
+		message.value = "";
 	}
 
 
