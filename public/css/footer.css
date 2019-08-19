@@ -15,7 +15,7 @@
     margin-top: 10%;
 }
 .footerDescription{
-margin-bottom: 25%;
+margin-bottom: 15%;
 }
 #footer_logo {
     margin-top: 20%;
@@ -29,7 +29,7 @@ margin-bottom: 25%;
      border-bottom: 1px solid rgba(153,153,153,0.4);
  }
 footer {
-    height: 67vh;
+    height: 65vh;
     background-color: #2B2A49;
 }
 
