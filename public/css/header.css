@@ -1,7 +1,3 @@
-* {
-	margin: 0;
-}
-
 header {
 	display: flex;
 	flex-direction: row;
@@ -48,14 +44,4 @@ header {
 	color: white;
 	font-size: 24px;
 	padding: 8px 0 0 0;
-}
-
-.join {
-	border: none;
-	background-image: linear-gradient(to right, #5fc2dc, #00b1ed, #009bfc, #447dfc, #9051e6);
-	color: white;
-	padding: 13px 40px 13px 40px;
-	border-radius: 8px;
-	text-align: center;
-	text-decoration: none;
 }
