@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/game-grid.css">
+    <link rel="stylesheet" href="/css/general.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="grid-games">
+
+            <% dummyGridBoxes.forEach(gridBox => { %>
+                <div class="single-grid-box">
+                    <div class="grid-box-img">
+                        <img src="<%- gridBox.box_imgSrc%>" alt="">
+                    </div>
+                    <div class="grid-box-content">
+                        <p class="grid-box-date"><%- gridBox.box_date%></p>
+                        <h2 class="grid-box-header"><%- gridBox.box_title%></h2>
+                        <p class="grid-box-textcontent"><%- gridBox.box_desc%></p>
+                        <p class="grid-box-price"><%- gridBox.box_price%>$</p>
+                    </div>
+                </div>
+            <% }); %>
+
+
+
+        </div>
+    </div>
+</body>
+
+</html>
