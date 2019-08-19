@@ -12,6 +12,31 @@ module.exports = (app) =>{
         blog_imgSrc: "/img/games/dummyimg.jpg"
     }]
 
+    var dummyGridBoxes = [{
+        box_title: "test1",
+        box_price: "6969",
+        box_date: "69/69/6969",
+        box_desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi officia illo autem impedit fugit facilis corrupti, quas quos, libero iure amet architecto eum accusantium ducimus tenetur veniam explicabo vel porro.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi officia illo autem impedit fugit facilis corrupti, quas quos,",
+        box_imgSrc: "/img/dummyimg.jpg"
+    },{
+        box_title: "omegalul",
+        box_price: "1337",
+        box_date: "13/37/1337",
+        box_desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi officia illo autem impedit fugit facilis corrupti, quas quos",
+        box_imgSrc: "/img/gaming-OG.jpg"
+    },{
+        box_title: "omegalul",
+        box_price: "1337",
+        box_date: "13/37/1337",
+        box_desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi officia illo autem impedit fugit facilis corrupti, quas quos",
+        box_imgSrc: "/img/gaming-OG.jpg"
+    },{
+        box_title: "omegalul",
+        box_price: "1337",
+        box_date: "13/37/1337",
+        box_desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi officia illo autem impedit fugit facilis corrupti, quas quos",
+        box_imgSrc: "/img/gaming-OG.jpg"
+    }]
 
     app.get('/', async (req,res) =>{
         res.render("home",{
@@ -28,9 +53,11 @@ module.exports = (app) =>{
     });
 
     app.get('/store', async (req,res) =>{
-        res.render("store")
+        res.render("store", {
+            "dummyGridBoxes": dummyGridBoxes
+        })
     })
     app.get('/contact', async (req,res) =>{
-        res.render("contact")
+        res.render("partials/contactform")
     })
 }

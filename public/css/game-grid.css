@@ -1,0 +1,49 @@
+.grid-games{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2em;
+
+}
+.single-grid-box{
+    display: flex;
+    flex-direction: column;
+    background-color: #292945;
+    border-radius: 10px
+}
+.grid-box-content{
+    padding: 1em;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.grid-box-img{
+    height: 10em;
+}
+.grid-box-img img{
+    height: 100%;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.grid-box-date{
+    text-align: end;
+    font-size: .9em;
+    color: #C1D4F9;
+    margin: 0;
+}
+.grid-box-header{
+    text-align: center;
+    margin: 0;
+    font-size: 2em;
+}
+.grid-box-textcontent{
+    color: #BFCAEB;
+    text-align: center;
+}
+.grid-box-price{
+    text-align: center;
+    color: #C1D4F9;
+    font-size: 2.5em;
+    margin: 0;
+    margin-top: auto;
+}

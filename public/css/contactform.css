@@ -1,0 +1,94 @@
+#contactWrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 3fr;
+	width: 75%;
+	margin: 5% auto 5% auto;
+}
+
+#formTitle {
+	grid-column: 1 / -1;
+	grid-row: 1 / 2;
+}
+
+#contactInfo {
+	display: grid;
+	grid-template-rows: 2fr repeat(3, 1fr);
+}
+
+.infoText {
+	width: 85%;
+	margin: 0 auto;
+}
+
+.infoItem {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	grid-template-rows: 1fr 1fr;
+	margin: 6px 0 10px 0;
+}
+
+.infoIcon {
+	grid-column: 1 / 2;
+	grid-row: 1 / -1;
+	font-size: 18px;
+	text-align: center;
+	color: dodgerblue;
+}
+
+.infoTitle {
+	font-size: 14px;
+	color: rgba(210, 210, 255, .85);
+}
+
+#contactForm {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr 2fr 1fr;
+	grid-gap: 10px;
+}
+
+#contactForm *:not(:last-child) {
+	border: none;
+	background-color: #292945;
+	padding: 0 0 0 10px;
+}
+
+#contactForm #contactMessage {
+	grid-column: 1 / -1;
+	width: 100%;
+	justify-self: center;
+	resize: none;
+	padding: 12px 0 0 8px;
+}
+
+#contactSubmit {
+    background-image: linear-gradient(to right, #5fc2dc, #00b1ed, #009bfc, #447dfc, #9051e6);
+	color: white;
+	border: none;
+	border-radius: 10px;
+	width: 60%;
+	height: 100%;
+	align-self: center;
+}
+
+#contactSubmit:hover {
+    background-image: linear-gradient(to left, #5fc2dc, #00b1ed, #009bfc, #447dfc, #9051e6);
+    color: white;
+}
+
+/*======================================================================*/
+/* Italics... */
+
+::-webkit-input-placeholder {
+	font-style: italic;
+ }
+ :-moz-placeholder {
+	font-style: italic;  
+ }
+ ::-moz-placeholder {
+	font-style: italic;  
+ }
+ :-ms-input-placeholder {  
+	font-style: italic; 
+ }
