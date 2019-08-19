@@ -1,34 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<% dummyBlogPosts.forEach(currentPost => { %>
+    
+    <div class="blog-post">
+    <div class="blog-post__left">
+        <h1 class="blog-post__header"><%- currentPost.blog_title%></h1>
+        <p class="blog-post__textcontent"><%- currentPost.blog_contentText%></p>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/blog-post.css">
-</head>
-
-<body>
-
-    <div class="wrapper">
-        <% dummyBlogPosts.forEach(currentPost => { %>
-            
-            <div class="blog-post">
-            <div class="blog-post__left">
-                <h1 class="blog-post__header"><%- currentPost.blog_title%></h1>
-                <p class="blog-post__textcontent"><%- currentPost.blog_contentText%></p>
-
-                <a href="#" class="blog-post__button">Read More</a>
-            </div>
-            <div class="blog-post__right">
-                <img class="blog-post__img" src="<%- currentPost.blog_imgSrc %>" alt="">
-            </div>
-        </div>
-
-        <% }); %>
+        <a href="#" class="blog-post__button">Read More</a>
     </div>
+    <div class="blog-post__right">
+        <img class="blog-post__img" src="<%- currentPost.blog_imgSrc %>" alt="">
+    </div>
+</div>
 
-</body>
-
-</html>
+<% }); %>
