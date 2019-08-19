@@ -22,7 +22,9 @@
 .footerDescription{
 margin-top: 7%;
 }
-
+#footer_logo {
+    margin-top: 5%;
+ }
 footer {
     height: 50vh;
     background-color: #2B2A49;
