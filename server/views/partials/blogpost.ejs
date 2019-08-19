@@ -1,14 +1,14 @@
-<% dummyBlogPosts.forEach(currentPost => { %>
+<% newsPosts.forEach(newsPost => { %>
     
     <div class="blog-post">
     <div class="blog-post__left">
-        <h1 class="blog-post__header"><%- currentPost.blog_title%></h1>
-        <p class="blog-post__textcontent"><%- currentPost.blog_contentText%></p>
+        <h1 class="blog-post__header"><%- newsPost.title%></h1>
+        <p class="blog-post__textcontent"><%- newsPost.description%></p>
 
         <a href="#" class="button button--gradient">Read More</a>
     </div>
     <div class="blog-post__right">
-        <img class="blog-post__img" src="<%- currentPost.blog_imgSrc %>" alt="">
+        <img class="blog-post__img" src="/img/news/<%- newsPost.img %>" alt="">
     </div>
 </div>
 
