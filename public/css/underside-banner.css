@@ -1,0 +1,31 @@
+* {
+	margin: 0;
+}
+
+header {
+	height: 110px;
+	width: 100%;
+	background-color: rgba(31, 29, 52, .60);
+	box-shadow: 2px 0 15px 2px black;
+	position: absolute;
+	top: 0;
+}
+
+.banner {
+	height: 340px;
+	background-image: url(https://www.wallpapermaiden.com/wallpaper/10588/download/1600x900/fantasy-landscape-mountain-snow-illustration-concept-art-clouds.jpg);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.pagePath {
+	display: flex;
+	flex-direction: row;
+}
+
+.pathItem::after {
+	content: "/";
+	padding: 0 4px 0 4px;
+}

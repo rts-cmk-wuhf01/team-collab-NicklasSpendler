@@ -1,0 +1,47 @@
+
+
+.flexbox {
+    display:flex;
+}
+
+.flex1{
+    flex:1;
+}
+
+.logo{
+    margin: 5em 0 0 15em;
+    width:20%;
+    height: auto;
+}
+
+.navbox {
+    margin-bottom: 10%;
+}
+.footerDescription{
+    margin-top: 10em;
+}
+
+footer {
+    height: 50vh;
+    background-color: #2B2A49;
+}
+
+footer ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  footer li {
+      margin: 5% 8% 5% 0;
+    flex:1;
+}
+
+footer a{ 
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
