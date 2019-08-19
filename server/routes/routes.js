@@ -67,11 +67,13 @@ module.exports = (app) =>{
         let contact_email = req.body.mail;
         let contact_phone = req.body.phone;
         let contact_subject = req.body.subject;
-        let contact_message = req.body.message
+        let contact_message = req.body.message;
+
+        let parsedPhoneNumber = Number(parseInt(contact_phone));
 
         if(!contact_name == "" && contact_name.length > 1){
             if(!contact_email == "" && contact_email.length > 1 && validateEmail(contact_email)){
-                if(!contact_phone == "" && contact_phone.length > 1) {
+                if(!contact_phone == "" && contact_phone.length > 1 && !isNaN(parsedPhoneNumber)) {
                     if(!contact_subject == "" && contact_subject.length > 1){
                         if(!contact_message == "" && contact_message.length > 1){
                             console.log('meget godt', )
