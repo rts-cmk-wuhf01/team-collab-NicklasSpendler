@@ -12,16 +12,24 @@
 
 
 .navbox {
-    margin-top: 5%;
+    margin-top: 10%;
 }
 .footerDescription{
-margin-top: 7%;
+margin-bottom: 25%;
 }
 #footer_logo {
-    margin-top: 5%;
+    margin-top: 20%;
+ }
+
+ #copyright{
+     margin-top: 2em;
+ }
+
+ #footer_box{
+     border-bottom: 1px solid rgba(153,153,153,0.4);
  }
 footer {
-    height: 50vh;
+    height: 65vh;
     background-color: #2B2A49;
 }
 
@@ -33,14 +41,13 @@ footer ul {
   }
 
   footer li {
-    margin: 5% 0 5% 0;
+    margin-bottom: 8%;
     flex:1;
 }
 
 footer a{ 
   color: white;
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
 }
 
