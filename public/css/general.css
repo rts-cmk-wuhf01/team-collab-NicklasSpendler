@@ -1,3 +1,6 @@
+:root{
+    --contentpadding: 0 18%;;
+}
 body{
     background-color: #1F1D33;
     margin: 0;
@@ -5,8 +8,7 @@ body{
     color: white;
 }
 .wrapper{
-    padding: 0 18%;
-
+    padding: var(--contentpadding)
 }
 
 a{
