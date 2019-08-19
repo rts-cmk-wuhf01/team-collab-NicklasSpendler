@@ -1,5 +1,7 @@
 
-
+*{
+    box-sizing: border-box;
+}
 .flexbox {
     display:flex;
 }
@@ -9,16 +11,16 @@
 }
 
 .logo{
-    margin: 5em 0 0 15em;
-    width:20%;
+    margin: 7em 0 0 15em;
+    width:30%;
     height: auto;
 }
 
 .navbox {
-    margin-bottom: 10%;
+    margin-top: 5%;
 }
 .footerDescription{
-    margin-top: 10em;
+margin-top: 7%;
 }
 
 footer {
@@ -34,7 +36,7 @@ footer ul {
   }
 
   footer li {
-      margin: 5% 8% 5% 0;
+    margin: 5% 8% 5% 0;
     flex:1;
 }
 
@@ -45,3 +47,15 @@ footer a{
   text-decoration: none;
 }
 
+.copyright{
+    float:right;
+}
+
+.ARS{
+    float: left;
+}
+
+.footerWrapper{
+    width: 70%;
+    margin: 0 auto;
+}
