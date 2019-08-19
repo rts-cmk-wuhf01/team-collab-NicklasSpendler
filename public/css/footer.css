@@ -53,9 +53,11 @@ footer a{
 
 .copyright{
     float:right;
+    color: rgba(255, 255, 255, 0.3);
 }
 
 .ARS{
+    color: rgba(255, 255, 255, 0.3);
     float: left;
 }
 

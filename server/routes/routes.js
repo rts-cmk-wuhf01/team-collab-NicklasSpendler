@@ -9,7 +9,7 @@ module.exports = (app) =>{
     },{
         blog_title: "test2",
         blog_contentText: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi officia illo autem impedit fugit facilis corrupti, quas quos, libero iure amet architecto eum accusantium ducimus tenetur veniam explicabo vel porro.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi officia illo autem impedit fugit facilis corrupti, quas quos, libero iure amet architecto eum accusantium ducimus tenetur veniam explicabo vel porro.",
-        blog_imgSrc: "/img/dummyimg.jpg"
+        blog_imgSrc: "/img/games/dummyimg.jpg"
     }]
 
 
