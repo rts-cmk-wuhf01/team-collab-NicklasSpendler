@@ -15,5 +15,34 @@ contactForm.addEventListener("submit", (event) => {
 	else {
 		alert(`The name field must be filled in!`);
 	}
+	if(mail.value != "") {
+		console.log(mail.value);
+		mail.value = "";
+	}
+	else {
+		alert(`The mail field must be filled in!`);
+	}
+	if(phone.value != "" && typeof(phone.value) != NaN) {
+		console.log(phone.value);
+		phone.value = "";
+	}
+	else {
+		alert(`The phone field must be filled in!`);
+	}
+	if(subject.value != "") {
+		console.log(subject.value);
+		subject.value = "";
+	}
+	else {
+		alert(`The subject field must be filled in!`);
+	}
+	if(message.value != "") {
+		console.log(message.value);
+		message.value = "";
+	}
+	else {
+		alert(`The message field must be filled in!`);
+	}
+
 
 });
