@@ -61,6 +61,8 @@
 	justify-self: center;
 	resize: none;
 	padding: 12px 0 0 8px;
+	font-family: inherit;
+	font-size: .8rem;
 }
 
 #contactSubmit {
