@@ -7,29 +7,24 @@ module.exports = (app) => {
         let [newsData] = await db.execute("SELECT title,description,img,postTime FROM newsposts")
         db.end();
         res.render("home", {
-            "newsPosts": newsData
+            "newsPosts": newsData,
+            page: "Home"
         })
     });
-
-    app.get('/header', async (req, res, next) => {
-        res.render("partials/header");
-    });
-
-    app.get('/subpage-banner', async (req, res, next) => {
-        res.render("partials/underside-banner");
-    });
-
     app.get('/store', async (req, res) => {
         let db = await mysql.connect();
         let [gamesData] = await db.execute("SELECT * FROM games")
         db.end();
 
         res.render("store", {
-            "games": gamesData
+            "games": gamesData,
+            page: "Store"
         })
     })
     app.get('/contact', async (req, res) => {
-        res.render("partials/contactform")
+        res.render("contact",{
+            page: "Contact"
+        })
     })
     app.post('/contact', async (req,res) =>{
 
@@ -53,7 +48,6 @@ module.exports = (app) => {
                 }
             }
         }
-
         res.redirect('/contact')
     })
 
