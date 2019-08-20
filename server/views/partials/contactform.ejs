@@ -1,13 +1,5 @@
-<link rel="stylesheet" href="css/general.css">
-<link rel="stylesheet" href="css/header.css">
-<link rel="stylesheet" href="css/underside-banner.css">
-<link rel="stylesheet" href="css/contactform.css">
-
-<script src="https://kit.fontawesome.com/ab39bcca60.js"></script>
-
 <%- include("header")%>
 
-<%- include("underside-banner")%>
 
  <div id="contactWrapper">
 
@@ -36,7 +28,7 @@
 	<form method="post" action="/contact" id="contactForm" autocomplete="off">
 		<input type="text" name="name" id="contactName" placeholder="YOUR NAME">
 		<input type="text" name="mail" id="contactMail" placeholder="EMAIL ADDRESS">
-		<input type="number" maxlength="8" name="phone" id="contactPhone" placeholder="PHONE NUMBER">
+		<input type="tel" maxlength="8" name="phone" id="contactPhone" placeholder="PHONE NUMBER">
 		<input type="text" name="subject" id="contactSubject" placeholder="SUBJECT">
 		<textarea name="message" id="contactMessage" placeholder="YOUR MESSAGE..."></textarea>
 		<input type="submit" id="contactSubmit" value="Send message">

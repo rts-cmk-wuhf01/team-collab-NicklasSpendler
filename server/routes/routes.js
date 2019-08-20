@@ -7,7 +7,8 @@ module.exports = (app) => {
         let [newsData] = await db.execute("SELECT title,description,img,postTime FROM newsposts")
         db.end();
         res.render("home", {
-            "newsPosts": newsData
+            "newsPosts": newsData,
+            page: "Home"
         })
     });
 
@@ -25,11 +26,14 @@ module.exports = (app) => {
         db.end();
 
         res.render("store", {
-            "games": gamesData
+            "games": gamesData,
+            page: "Store"
         })
     })
     app.get('/contact', async (req, res) => {
-        res.render("partials/contactform")
+        res.render("contact",{
+            page: "Contact"
+        })
     })
     app.post('/contact', async (req,res) =>{
 
