@@ -9,6 +9,8 @@
 #formTitle {
 	grid-column: 1 / -1;
 	grid-row: 1 / 2;
+	display: flex;
+	justify-content: space-between;
 }
 
 #contactInfo {
@@ -69,6 +71,12 @@
 }
 .fieldError{
 	border: 1px solid red;
+}
+.returnmessage--success{
+	color: #05e805;
+}
+.returnmessage--error{
+	color: red;
 }
 
 /*======================================================================*/
