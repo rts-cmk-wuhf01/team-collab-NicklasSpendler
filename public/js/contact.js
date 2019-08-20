@@ -41,14 +41,14 @@ contactForm.addEventListener("submit", (event) => {
 		phone.classList.add("fieldError")
 		error = true;
 	}
-	if(subject.value != "" && subject.value > 2) {
+	if(subject.value != "" && subject.value.length > 2) {
 		subject.classList.remove("fieldError")
 	}
 	else {
 		subject.classList.add("fieldError")
 		error = true;
 	}
-	if(message.value != "" && message.value > 2) {
+	if(message.value != "" && message.value.length > 2) {
 		message.classList.remove("fieldError")
 	}
 

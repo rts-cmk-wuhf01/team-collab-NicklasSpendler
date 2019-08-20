@@ -58,12 +58,11 @@ module.exports = (app) => {
           db.end();
         res.render("contact", {
             page: "Contact",
-            "gamesNav": GamesNavData[0]
+            "gamesNav": GamesNavData[0],
         })
     })
     app.post('/contact', async (req, res) => {
-
-        console.log('', req.body)
+        let success = undefined;
         let contact_name = req.body.name;
         let contact_email = req.body.mail;
         let contact_phone = req.body.phone;
@@ -77,13 +76,42 @@ module.exports = (app) => {
                 if (!contact_phone == "" && contact_phone.length > 1 && !isNaN(parsedPhoneNumber)) {
                     if (!contact_subject == "" && contact_subject.length > 1) {
                         if (!contact_message == "" && contact_message.length > 1) {
-                            console.log('meget godt')
+                            let date = new Date()
+                            let db = await mysql.connect();
+                            let result = await db.execute(`
+                                INSERT INTO contactmessages 
+                                SET name = ?, 
+                                email = ?, 
+                                phone = ?, 
+                                subject = ?, 
+                                message = ?, 
+                                contactTime = ?`
+                                , [contact_name, contact_email, contact_phone, contact_subject, contact_message, date]);
+                            db.end();
+
+                            if (result[0].affectedRows > 0) {
+                                success = true
+                            } else {
+                                success = false
+                            }
+
                         }
                     }
                 }
             }
         }
-        res.redirect('/contact')
+        let db = await mysql.connect();
+        let GamesNavData = await db.execute(`
+        SELECT name,
+        id
+        FROM games
+          `)
+          db.end();
+        res.render("contact", {
+            page: "Contact",
+            "gamesNav": GamesNavData[0],
+            success: success,
+        })
     })
 
     function validateEmail(email) {

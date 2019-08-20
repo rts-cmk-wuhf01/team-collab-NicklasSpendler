@@ -3,7 +3,12 @@
 
 <div id="contactWrapper">
 
-	<h2 id="formTitle">Contact Information</h2>
+	<div id="formTitle">
+		<h2>Contact Information</h2>
+		<% if (typeof success != "undefined"){%>	
+		<h2 class="<%- success == true ? 'returnmessage--success' : 'returnmessage--error' %>"><%- success == true ? 'Success! We will get back to you shortly' : 'Error! Something went wrong...' %></h2>
+		<%}%>
+	</div>
 
 	<div id="contactInfo">
 		<p class="infoText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis fugiat porro deleniti
