@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2019 at 01:20 PM
+-- Generation Time: Aug 20, 2019 at 02:53 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -21,6 +21,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `indiega_solutions`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactmessages`
+--
+
+CREATE TABLE `contactmessages` (
+  `id` int(11) NOT NULL,
+  `name` varchar(256) NOT NULL,
+  `email` varchar(256) NOT NULL,
+  `phone` int(8) NOT NULL,
+  `subject` varchar(256) NOT NULL,
+  `message` text NOT NULL,
+  `contactTime` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `contactmessages`
+--
+
+INSERT INTO `contactmessages` (`id`, `name`, `email`, `phone`, `subject`, `message`, `contactTime`) VALUES
+(1, 'Daniel', 'dtherkildsen@hotmail.com', 12345678, 'Hej cool site', 'Vildt bror, jeg er så glad for at være her :D', '2019-08-20 13:51:05'),
+(2, 'Daniel', 'dtherkildsen@hotmail.com', 12345678, 'Hej cool site', 'Vildt bror, jeg er så glad for at være her :D', '2019-08-20 13:51:41'),
+(4, 'Daniel', 'Dtherkildsen@hotmail.com', 13213231, 'Sygt bror', 'Vildt bror', '2019-08-20 14:14:37');
 
 -- --------------------------------------------------------
 
@@ -81,6 +106,12 @@ INSERT INTO `newsposts` (`id`, `title`, `description`, `img`, `postTime`, `fkGam
 --
 
 --
+-- Indexes for table `contactmessages`
+--
+ALTER TABLE `contactmessages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `games`
 --
 ALTER TABLE `games`
@@ -95,6 +126,12 @@ ALTER TABLE `newsposts`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `contactmessages`
+--
+ALTER TABLE `contactmessages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `games`
