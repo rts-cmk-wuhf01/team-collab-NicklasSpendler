@@ -14,22 +14,22 @@ function validateEmail(email) {
 contactForm.addEventListener("submit", (event) => {
 	event.preventDefault();
 	let error = false;
-	if(name.value != "" && name.value.length > 1) {
+	if (name.value != "" && name.value.length > 1) {
 	}
 	else {
 		alert(`Enter a name that's 2 or more characters!`);
 		error = true;
 		return false;
 	}
-	if(mail.value != "" && validateEmail(mail.value)) {
+	if (mail.value != "" && validateEmail(mail.value)) {
 	}
 	else {
 		alert(`Please enter a valid email!`);
 		error = true;
 		return false;
 	}
-	if(phone.value != "") {
-		if(phone.value.length == 8) {
+	if (phone.value != "") {
+		if (phone.value.length == 8) {
 		}
 		else {
 			alert(`Please enter a phone number that's 8 digits!`);
@@ -42,14 +42,14 @@ contactForm.addEventListener("submit", (event) => {
 		error = true;
 		return false;
 	}
-	if(subject.value != "") {
+	if (subject.value != "") {
 	}
 	else {
 		alert(`The subject field must be filled in!`);
 		error = true;
 		return false;
 	}
-	if(message.value != "") {
+	if (message.value != "") {
 	}
 
 	else {
@@ -58,7 +58,7 @@ contactForm.addEventListener("submit", (event) => {
 		return false;
 	}
 
-	if (error == false){
+	if (error == false) {
 		contactForm.submit();
 	}
 });

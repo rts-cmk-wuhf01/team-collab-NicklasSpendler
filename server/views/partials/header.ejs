@@ -1,23 +1,35 @@
-
 <header>
-		<a href="/"><img src="/img/logo.png" alt="LOGO" class="logo"></a>
+	<a href="/"><img src="/img/logo.png" alt="LOGO" class="logo"></a>
 
-		<nav id="nav">
-			<ul id="navList">
-				<li id="navItem">
-					<a href="/" id="navLink">HOMEPAGE</a>
-				</li>
-				<li id="navItem">
-					<a href="/store" id="navLink">STORE</a>
-				</li>
-				<li id="navItem">
-					<a href="/contact" id="navLink">CONTACT</a>
-				</li>
-			</ul>
-		</nav>
+	<nav id="nav">
+		<ul id="navList">
+			<li class="navItem">
+				<a href="/">HOMEPAGE</a>
+			</li>
+			<li class="navItem">
+				<a href="/store">STORE</a>
+			</li>
+			<li class="navItem">
+				<a href="/contact">CONTACT</a>
+			</li>
 
-		<div id="search">
-			<span id="searchIcon" class="fas fa-search"></span>
-			<a href="#" class="button button--gradient">JOIN US NOW</a>
-		</div>
-	</header>
+			<div class="dropdown">
+				<a class="dropbtn">GAMES
+					<i class="fa fa-caret-down"></i>
+				</a>
+				<div class="dropdown-content">
+					<% if(typeof gamesNav != 'undefined'){ %>
+					<% gamesNav.forEach(game =>{ %>
+					<a href="/newsPosts/<%- game.id %>"><%- game.name %></a>
+					<%console.log(game)%>
+					<% }); %>
+					<% } %>
+				</div>
+		</ul>
+	</nav>
+
+	<div id="search">
+		<span id="searchIcon" class="fas fa-search"></span>
+		<a href="#" class="button button--gradient">JOIN US NOW</a>
+	</div>
+</header>
