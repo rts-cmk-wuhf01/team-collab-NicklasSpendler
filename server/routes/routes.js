@@ -56,4 +56,23 @@ module.exports = (app) => {
     
         return regex.test(email)
     }
+
+    app.get('/newsposts/:category_id', async (req, res) => {
+        let db = await mysql.connect();
+        let [newsData] = await db.execute(`SELECT newsposts.id AS news_id,
+        newsposts.title AS news_title,
+        newsposts.description AS news_description,
+        newsposts.img AS news_img,
+        newsposts.postTime AS news_postTime,
+        newsposts.fkGame AS news_fkGame
+        FROM newsposts
+        INNER JOIN games ON fkGame = games.id
+        `)
+        db.end();
+        res.render("home", {
+            "newsPosts": newsData,
+            page: "Home"
+        })
+    });
+
 }

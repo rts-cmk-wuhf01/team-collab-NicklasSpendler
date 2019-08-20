@@ -51,7 +51,7 @@ contactForm.addEventListener("submit", (event) => {
 	}
 	if(message.value != "") {
 	}
-	
+
 	else {
 		alert(`The message field must be filled in!`);
 		error = true;
