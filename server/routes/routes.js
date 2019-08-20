@@ -4,7 +4,7 @@ module.exports = (app) => {
 
     app.get('/', async (req, res) => {
         let db = await mysql.connect();
-        let [newsData] = await db.execute("SELECT title,description,img,postTime FROM newsposts")
+        let [newsData] = await db.execute("SELECT title,newsposts.description as description,newsposts.img as img,postTime,games.id as gameid, games.name as gamename FROM newsposts INNER JOIN games on fkGame = games.id ORDER BY postTime DESC")
         db.end();
         res.render("home", {
             "newsPosts": newsData,
@@ -13,7 +13,7 @@ module.exports = (app) => {
     });
     app.get('/store', async (req, res) => {
         let db = await mysql.connect();
-        let [gamesData] = await db.execute("SELECT * FROM games")
+        let [gamesData] = await db.execute("SELECT * FROM games ORDER BY releaseDate DESC")
         db.end();
 
         res.render("store", {
