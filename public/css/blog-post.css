@@ -23,3 +23,16 @@
 .blog-post__textcontent{
     margin-bottom: 2em;
 }
+.blog-post__postdate{
+    margin: .5em 0;
+    color: #C1D4F9;
+}
+.blog-post__gametitle{
+    color: #C1D4F9;
+    transition: .4s color;
+    display: inline-block;
+    margin-bottom: .5em;
+}
+.blog-post__gametitle:hover{
+    color: #F7A652;
+}
