@@ -26,12 +26,12 @@ module.exports = (app) => {
 
         let db = await mysql.connect();
         let [gameData] = await db.execute("SELECT * FROM games WHERE id = ?", [req.params.game_id]);
-        let [newsData] = await db.execute("SELECT * FROM newsposts WHERE fkGame = ? ORDER BY postTime DESC LIMIT 1", [req.params.game_id]);
+        let [newsData] = await db.execute("SELECT * FROM newsposts WHERE fkGame = ? ORDER BY postTime DESC LIMIT 3", [req.params.game_id]);
         db.end();
 
         res.render("single-game", {
             game: gameData[0],
-            article: newsData[0],
+            articles: newsData,
             page: gameData[0].name
         });
     });
