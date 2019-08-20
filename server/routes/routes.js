@@ -11,15 +11,6 @@ module.exports = (app) => {
             page: "Home"
         })
     });
-
-    app.get('/header', async (req, res, next) => {
-        res.render("partials/header");
-    });
-
-    app.get('/subpage-banner', async (req, res, next) => {
-        res.render("partials/underside-banner");
-    });
-
     app.get('/store', async (req, res) => {
         let db = await mysql.connect();
         let [gamesData] = await db.execute("SELECT * FROM games")
@@ -57,7 +48,6 @@ module.exports = (app) => {
                 }
             }
         }
-
         res.redirect('/contact')
     })
 
