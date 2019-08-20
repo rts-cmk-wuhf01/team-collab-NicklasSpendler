@@ -48,8 +48,7 @@
 	grid-gap: 10px;
 }
 
-#contactForm *:not(:last-child) {
-	border: none;
+#contactForm input, #contactForm textarea {
 	background-color: #292945;
 	padding: 0 0 0 10px;
 	color: white;
@@ -65,19 +64,11 @@
 	font-size: .8rem;
 }
 
-#contactSubmit {
-    background-image: linear-gradient(to right, #5fc2dc, #00b1ed, #009bfc, #447dfc, #9051e6);
-	color: white;
-	border: none;
-	border-radius: 10px;
-	width: 60%;
-	height: 100%;
-	align-self: center;
+.borderless{
+	border: 1px solid transparent;
 }
-
-#contactSubmit:hover {
-    background-image: linear-gradient(to left, #5fc2dc, #00b1ed, #009bfc, #447dfc, #9051e6);
-    color: white;
+.fieldError{
+	border: 1px solid red;
 }
 
 /*======================================================================*/
