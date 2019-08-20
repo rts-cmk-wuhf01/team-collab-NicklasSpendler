@@ -7,7 +7,6 @@ let message = contactForm.querySelector("#contactMessage");
 
 function validateEmail(email) {
 	let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
 	return regex.test(email)
 }
 
@@ -15,46 +14,46 @@ contactForm.addEventListener("submit", (event) => {
 	event.preventDefault();
 	let error = false;
 	if(name.value != "" && name.value.length > 1) {
+		name.classList.remove("fieldError")
 	}
 	else {
-		alert(`Enter a name that's 2 or more characters!`);
+		name.classList.add("fieldError")
 		error = true;
-		return false;
 	}
 	if(mail.value != "" && validateEmail(mail.value)) {
+		mail.classList.remove("fieldError")
 	}
 	else {
-		alert(`Please enter a valid email!`);
+		mail.classList.add("fieldError")
 		error = true;
-		return false;
 	}
-	if(phone.value != "") {
+	if(phone.value != "" && !isNaN(phone.value)) {
+		phone.classList.remove("fieldError")
 		if(phone.value.length == 8) {
+			phone.classList.remove("fieldError")
 		}
 		else {
-			alert(`Please enter a phone number that's 8 digits!`);
+			phone.classList.add("fieldError")
 			error = true;
-			return false;
 		}
 	}
 	else {
-		alert(`The phone field must be filled in!`);
+		phone.classList.add("fieldError")
 		error = true;
-		return false;
 	}
-	if(subject.value != "") {
+	if(subject.value != "" && subject.value > 2) {
+		subject.classList.remove("fieldError")
 	}
 	else {
-		alert(`The subject field must be filled in!`);
+		subject.classList.add("fieldError")
 		error = true;
-		return false;
 	}
-	if(message.value != "") {
+	if(message.value != "" && message.value > 2) {
+		message.classList.remove("fieldError")
 	}
 	else {
-		alert(`The message field must be filled in!`);
+		message.classList.add("fieldError")
 		error = true;
-		return false;
 	}
 
 	if (error == false){
