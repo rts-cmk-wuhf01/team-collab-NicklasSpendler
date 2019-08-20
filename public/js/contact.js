@@ -51,12 +51,13 @@ contactForm.addEventListener("submit", (event) => {
 	if(message.value != "" && message.value > 2) {
 		message.classList.remove("fieldError")
 	}
+
 	else {
 		message.classList.add("fieldError")
 		error = true;
 	}
 
-	if (error == false){
+	if (error == false) {
 		contactForm.submit();
 	}
 });
