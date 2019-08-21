@@ -16,6 +16,7 @@
 
             <% games.forEach(game => { %>
 
+
             <div class="single-grid-box">
                 <div class="grid-box-img">
                     <img src="/img/games/<%- game.img%>" alt="">
@@ -25,7 +26,7 @@
                     <h2 class="grid-box-header"><%- game.name%></h2>
                     <div class="grid-box-genre">
                         <% game.genres.forEach(genre => { %>
-                            <a href="/store/genre/<%- genre.id%>"><%- genre.name%></a>
+                            <a href="/store/genre/<%- genre.name.toLowerCase().replace(" ","_")%>"><%- genre.name%></a>
                         <% }); %>
                     </div>
                     <p class="grid-box-textcontent"><%- game.description%></p>

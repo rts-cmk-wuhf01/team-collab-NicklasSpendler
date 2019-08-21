@@ -79,6 +79,11 @@
 	color: red;
 }
 
+.errorMessages{
+	list-style: none;
+	color: red;
+}
+
 /*======================================================================*/
 /* Italics... */
 
