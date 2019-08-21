@@ -24,14 +24,9 @@ header {
 	width: 500px;
 }
 
-#navItem {
+.navItem {
 	color: white;
 	list-style-type: none;
-}
-
-#navLink {
-	color: white;
-	text-decoration: none;
 }
 
 #search {
@@ -45,3 +40,18 @@ header {
 	font-size: 24px;
 	padding: 8px 0 0 0;
 }
+
+.dropdown:hover .dropdown-content {
+	display: block;
+  }
+  .dropdown-content {
+	background-color: rgba(0, 0, 0, 0.8);
+	display: none;
+	position: absolute;
+  }
+  .dropdown-content a {
+	  margin: 10px 7px 7px 7px;
+	  float: none;
+	  text-align: left;
+	  display:block;
+  }

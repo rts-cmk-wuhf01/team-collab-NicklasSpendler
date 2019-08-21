@@ -5,50 +5,59 @@ let phone = contactForm.querySelector("#contactPhone");
 let subject = contactForm.querySelector("#contactSubject");
 let message = contactForm.querySelector("#contactMessage");
 
+function validateEmail(email) {
+	let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return regex.test(email)
+}
+
 contactForm.addEventListener("submit", (event) => {
 	event.preventDefault();
-	
-	if(name.value != "" && typeof name.value == NaN) {
-		name.value = "";
+	let error = false;
+	if(name.value != "" && name.value.length > 1) {
+		name.classList.remove("fieldError")
 	}
 	else {
-		alert(`The name field must be filled in!`);
-		name.value = "";
+		name.classList.add("fieldError")
+		error = true;
 	}
-	if(mail.value != "") {
-		mail.value = "";
+	if(mail.value != "" && validateEmail(mail.value)) {
+		mail.classList.remove("fieldError")
 	}
 	else {
-		alert(`The mail field must be filled in!`);
-		mail.value = "";
+		mail.classList.add("fieldError")
+		error = true;
 	}
-	if(phone.value != "") {
+	if(phone.value != "" && !isNaN(phone.value)) {
+		phone.classList.remove("fieldError")
 		if(phone.value.length == 8) {
-			phone.value = "";
+			phone.classList.remove("fieldError")
 		}
 		else {
-			alert(`The phone number must be 8 digits long`);
-			phone.value = "";
+			phone.classList.add("fieldError")
+			error = true;
 		}
 	}
 	else {
-		alert(`The phone field must be filled in!`);
-		phone.value = "";
+		phone.classList.add("fieldError")
+		error = true;
 	}
-	if(subject.value != "" && typeof subject.value == NaN) {
-		subject.value = "";
-	}
-	else {
-		alert(`The subject field must be filled in!`);
-		subject.value = "";
-	}
-	if(message.value != "" && typeof message.value == NaN) {
-		message.value = "";
+	if(subject.value != "" && subject.value.length > 2) {
+		subject.classList.remove("fieldError")
 	}
 	else {
-		alert(`The message field must be filled in!`);
-		message.value = "";
+		subject.classList.add("fieldError")
+		error = true;
+	}
+	if(message.value != "" && message.value.length > 2) {
+		message.classList.remove("fieldError")
 	}
 
+	else {
+		message.classList.add("fieldError")
+		error = true;
+	}
 
+	if (error == false) {
+		contactForm.submit();
+	}
 });

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 19, 2019 at 01:20 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.1
+-- Vært: 127.0.0.1
+-- Genereringstid: 20. 08 2019 kl. 14:57:58
+-- Serverversion: 10.1.30-MariaDB
+-- PHP-version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `games`
+-- Struktur-dump for tabellen `contactmessages`
+--
+
+CREATE TABLE `contactmessages` (
+  `id` int(11) NOT NULL,
+  `name` varchar(256) NOT NULL,
+  `email` varchar(256) NOT NULL,
+  `phone` int(8) NOT NULL,
+  `subject` varchar(256) NOT NULL,
+  `message` text NOT NULL,
+  `contactTime` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Data dump for tabellen `contactmessages`
+--
+
+INSERT INTO `contactmessages` (`id`, `name`, `email`, `phone`, `subject`, `message`, `contactTime`) VALUES
+(1, 'Daniel', 'dtherkildsen@hotmail.com', 12345678, 'Hej cool site', 'Vildt bror, jeg er så glad for at være her :D', '2019-08-20 13:51:05'),
+(2, 'Daniel', 'dtherkildsen@hotmail.com', 12345678, 'Hej cool site', 'Vildt bror, jeg er så glad for at være her :D', '2019-08-20 13:51:41'),
+(4, 'Daniel', 'Dtherkildsen@hotmail.com', 13213231, 'Sygt bror', 'Vildt bror', '2019-08-20 14:14:37');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `games`
 --
 
 CREATE TABLE `games` (
@@ -38,7 +63,7 @@ CREATE TABLE `games` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `games`
+-- Data dump for tabellen `games`
 --
 
 INSERT INTO `games` (`id`, `name`, `img`, `price`, `description`, `releaseDate`) VALUES
@@ -52,7 +77,37 @@ INSERT INTO `games` (`id`, `name`, `img`, `price`, `description`, `releaseDate`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `newsposts`
+-- Struktur-dump for tabellen `images`
+--
+
+CREATE TABLE `images` (
+  `id` int(11) NOT NULL,
+  `src` varchar(50) NOT NULL,
+  `gameFK` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Data dump for tabellen `images`
+--
+
+INSERT INTO `images` (`id`, `src`, `gameFK`) VALUES
+(1, 'ark1', 1),
+(2, 'ark2', 1),
+(3, 'assassinsgreed1', 6),
+(4, 'assassinsgreed2', 6),
+(5, 'crysis1', 4),
+(6, 'crysis2', 4),
+(7, 'darq1', 3),
+(8, 'darq2', 3),
+(9, 'thewitcher1', 5),
+(10, 'thewitcher2', 5),
+(11, 'remnant1', 2),
+(12, 'remnant2', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `newsposts`
 --
 
 CREATE TABLE `newsposts` (
@@ -65,7 +120,7 @@ CREATE TABLE `newsposts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `newsposts`
+-- Data dump for tabellen `newsposts`
 --
 
 INSERT INTO `newsposts` (`id`, `title`, `description`, `img`, `postTime`, `fkGame`) VALUES
@@ -77,36 +132,59 @@ INSERT INTO `newsposts` (`id`, `title`, `description`, `img`, `postTime`, `fkGam
 (6, 'Community Crunch 194: Genesis, Public Beta, and On The Horizon', 'Last week we introduced a new chapter in the ARK saga: Genesis.  By purchasing the season pass, you obtain a brand new H.L.N.A companion.  Are you enjoying H.L.N.A.\'s company on your adventures?  Genesis will be a brand new experience for old and new players alike.  Check out our live stream if you\'re looking for more details on what to expect! ', 'ark_news1.jpg', '2019-08-12 00:00:00', 1);
 
 --
--- Indexes for dumped tables
+-- Begrænsninger for dumpede tabeller
 --
 
 --
--- Indexes for table `games`
+-- Indeks for tabel `games`
 --
 ALTER TABLE `games`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `newsposts`
+-- Indeks for tabel `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `gameFK` (`gameFK`);
+
+--
+-- Indeks for tabel `newsposts`
 --
 ALTER TABLE `newsposts`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Brug ikke AUTO_INCREMENT for slettede tabeller
 --
 
 --
--- AUTO_INCREMENT for table `games`
+-- Tilføj AUTO_INCREMENT i tabel `games`
 --
 ALTER TABLE `games`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `newsposts`
+-- Tilføj AUTO_INCREMENT i tabel `images`
+--
+ALTER TABLE `images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Tilføj AUTO_INCREMENT i tabel `newsposts`
 --
 ALTER TABLE `newsposts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Begrænsninger for dumpede tabeller
+--
+
+--
+-- Begrænsninger for tabel `images`
+--
+ALTER TABLE `images`
+  ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`gameFK`) REFERENCES `games` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

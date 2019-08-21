@@ -1,20 +1,18 @@
-<link rel="stylesheet" href="css/general.css">
-<link rel="stylesheet" href="css/header.css">
-<link rel="stylesheet" href="css/underside-banner.css">
-<link rel="stylesheet" href="css/contactform.css">
-
-<script src="https://kit.fontawesome.com/ab39bcca60.js"></script>
-
 <%- include("header")%>
 
-<%- include("underside-banner")%>
 
- <div id="contactWrapper">
+<div id="contactWrapper">
 
-	<h2 id="formTitle">Contact Information</h2>
+	<div id="formTitle">
+		<h2>Contact Information</h2>
+		<% if (typeof success != "undefined"){%>	
+		<h2 class="<%- success == true ? 'returnmessage--success' : 'returnmessage--error' %>"><%- success == true ? 'Success! We will get back to you shortly' : 'Error! Something went wrong...' %></h2>
+		<%}%>
+	</div>
 
 	<div id="contactInfo">
-		<p class="infoText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis fugiat porro deleniti explicabo soluta molestias modi, veritatis consequuntur pariatur exercitationem.</p>
+		<p class="infoText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis fugiat porro deleniti
+			explicabo soluta molestias modi, veritatis consequuntur pariatur exercitationem.</p>
 		<div class="infoItem">
 			<span class="infoIcon fas fa-phone"></span>
 			<p class="infoTitle">Phone</p>
@@ -34,12 +32,12 @@
 	</div>
 
 	<form method="post" action="/contact" id="contactForm" autocomplete="off">
-		<input type="text" name="name" id="contactName" placeholder="YOUR NAME">
-		<input type="text" name="mail" id="contactMail" placeholder="EMAIL ADDRESS">
-		<input type="number" maxlength="8" name="phone" id="contactPhone" placeholder="PHONE NUMBER">
-		<input type="text" name="subject" id="contactSubject" placeholder="SUBJECT">
-		<textarea name="message" id="contactMessage" placeholder="YOUR MESSAGE..."></textarea>
-		<input type="submit" id="contactSubmit" value="Send message">
+		<input type="text" class="borderless" name="name" id="contactName" placeholder="YOUR NAME">
+		<input type="text" class="borderless" name="mail" id="contactMail" placeholder="EMAIL ADDRESS">
+		<input type="tel" class="borderless" maxlength="8" name="phone" id="contactPhone" placeholder="PHONE NUMBER">
+		<input type="text" class="borderless" name="subject" id="contactSubject" placeholder="SUBJECT">
+		<textarea name="message" class="borderless" id="contactMessage" placeholder="YOUR MESSAGE..."></textarea>
+		<input type="submit" class="button button--gradient" value="Send message">
 	</form>
 
 </div>
