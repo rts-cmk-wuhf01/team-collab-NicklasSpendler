@@ -40,7 +40,7 @@
     font-size: 2em;
 }
 .grid-box-textcontent{
-    color: #BFCAEB;
+    color: white;
     text-align: center;
 }
 .grid-box-price{
@@ -49,4 +49,15 @@
     font-size: 2.5em;
     margin: 0;
     margin-top: auto;
+}
+.grid-box-genre{
+    text-align: center;
+    color: #C1D4F9;
+    margin: .5em 0;
+}
+.grid-box-genre a::after{
+    content: ",";
+}
+.grid-box-genre a:last-of-type::after{
+    content: "";
 }

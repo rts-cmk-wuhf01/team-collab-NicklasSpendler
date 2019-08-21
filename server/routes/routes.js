@@ -10,6 +10,7 @@ module.exports = (app) => {
         id
         FROM games
           `)
+
         db.end();
         res.render("home", {
             "newsPosts": newsData,
@@ -24,14 +25,34 @@ module.exports = (app) => {
         SELECT name,
         id
         FROM games
-          `)
-        db.end();
+        `);
 
-        res.render("store", {
-            "games": gamesData,
-            page: "Store",
-            "gamesNav": GamesNavData[0]
-        })
+        let gamesCounter = 0;
+        
+        gamesData.forEach( async (game, index)  => {
+            game.genres = [];
+            let [genreData] = await db.execute(`SELECT genre.name, genre.id FROM genremanager
+            INNER join genre on fkGenreID = genre.id
+            inner join games on fkGameID = games.id
+            where games.id = ?`, [game.id])
+            genreData.forEach(genre => {
+                game.genres.push(genre);
+            });
+            gamesCounter++;
+            if(gamesCounter == gamesData.length){
+                renderPage()
+            }
+        });
+        
+        db.end();
+        function renderPage() {
+            res.render("store", {
+                "games": gamesData,
+                page: "Store",
+                "gamesNav": GamesNavData[0]
+            })
+        }
+
     });
 
     app.get("/game/:game_id", async (req, res) => {
