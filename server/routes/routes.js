@@ -60,12 +60,26 @@ module.exports = (app) => {
         let db = await mysql.connect();
         let [gameData] = await db.execute("SELECT * FROM games WHERE id = ?", [req.params.game_id]);
         let [newsData] = await db.execute("SELECT * FROM newsposts WHERE fkGame = ? ORDER BY postTime DESC LIMIT 3", [req.params.game_id]);
+        let GamesNavData = await db.execute(`
+        SELECT name,
+        id
+        FROM games
+          `)
+          let [images] = await db.execute(`
+          SELECT src, 
+          games.id
+          FROM images
+          INNER JOIN games on gameFK = games.id
+          WHERE gameFK = ?
+          `, [req.params.game_id])
         db.end();
-
+       
         res.render("single-game", {
             game: gameData[0],
             articles: newsData,
-            page: gameData[0].name
+            page: gameData[0].name,
+            "gamesNav": GamesNavData[0],
+            "images":images
         });
     });
 
@@ -153,13 +167,14 @@ module.exports = (app) => {
         WHERE fkGame = ?
         ORDER BY postTime DESC
         `, [req.params.gameId])
-
+        
         let GamesNavData = await db.execute(`
      SELECT name,
      id
      FROM games
        `)
         db.end();
+       
         res.render("gamenews", {
             "newsPosts": newsData,
             page: newsData[0].gamename + " news",
