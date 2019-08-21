@@ -15,17 +15,23 @@
         <div class="grid-games">
 
             <% games.forEach(game => { %>
-                <div class="single-grid-box">
-                    <div class="grid-box-img">
-                        <img src="/img/games/<%- game.img%>" alt="">
-                    </div>
-                    <div class="grid-box-content">
-                        <p class="grid-box-date"><%- dateAndTime.format(game.releaseDate, 'MMMM DD, YYYY') %></p>
-                        <h2 class="grid-box-header"><%- game.name%></h2>
-                        <p class="grid-box-textcontent"><%- game.description%></p>
-                        <p class="grid-box-price"><%- game.price%>$</p>
-                    </div>
+
+            <div class="single-grid-box">
+                <div class="grid-box-img">
+                    <img src="/img/games/<%- game.img%>" alt="">
                 </div>
+                <div class="grid-box-content">
+                    <p class="grid-box-date"><%- dateAndTime.format(game.releaseDate, 'MMMM DD, YYYY') %></p>
+                    <h2 class="grid-box-header"><%- game.name%></h2>
+                    <div class="grid-box-genre">
+                        <% game.genres.forEach(genre => { %>
+                            <a href="/store/genre/<%- genre.id%>"><%- genre.name%></a>
+                        <% }); %>
+                    </div>
+                    <p class="grid-box-textcontent"><%- game.description%></p>
+                    <p class="grid-box-price"><%- game.price%>$</p>
+                </div>
+            </div>
             <% }); %>
 
 

@@ -1,5 +1,8 @@
 :root{
-    --contentpadding: 0 18%;;
+    --contentpadding: 0 18%;
+}
+*{
+    box-sizing: border-box;
 }
 body{
     background-color: #1F1D33;
