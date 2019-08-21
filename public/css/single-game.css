@@ -112,16 +112,21 @@
 	position: relative;
 }
 
-.fas{
+.fa-angle-left{
+	cursor: pointer;
+	color:white;
+	left:0%;	
 	font-size: 5em;
 	position: absolute;
 	top:50%;
 	opacity: 0.4;
 }
-.fa-angle-left{
-	left:0%;	
-}
 
 .fa-angle-right{	
+	cursor: pointer;
 	right:0%;	
+	font-size: 5em;
+	position: absolute;
+	top:50%;
+	opacity: 0.4;
 }

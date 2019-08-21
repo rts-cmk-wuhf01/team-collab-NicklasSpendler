@@ -39,9 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function ChangePhoto() {
-        if (dataArray.length == 0) {
-            alert("Der er ingen billeder at vise!");
-        }
+      
         imageContainer.setAttribute("src", dataArray[imageIndex]);
     }
 });
