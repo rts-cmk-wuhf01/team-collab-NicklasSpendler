@@ -106,3 +106,22 @@
 	border-radius: 5px;
 }
 
+/* Gallery */
+
+#galleryBox{
+	position: relative;
+}
+
+.fas{
+	font-size: 5em;
+	position: absolute;
+	top:50%;
+	opacity: 0.4;
+}
+.fa-angle-left{
+	left:0%;	
+}
+
+.fa-angle-right{	
+	right:0%;	
+}
