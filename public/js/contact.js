@@ -60,14 +60,15 @@ contactForm.addEventListener("submit", (event) => {
 		errorMessage.push("Please check Message box")
 	}
 
-	console.log('', errorMessageElem)
+	// console.log('', errorMessageElem)
 	if (errorMessage.length == 0) {
 		errorMessageElem.innerHTML = ""
 		contactForm.submit();
 	}else{
-		errorMessageElem.innerHTML = ""
+		errorMessageElem.innerHTML = "";
 		errorMessage.forEach(message => {
-			errorMessageElem.innerHTML += `<li>${message}</li>`
+			errorMessageElem.innerHTML += `<li>${message}</li>`;
 		});
+		errorMessage = [];
 	}
 });
