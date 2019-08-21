@@ -84,6 +84,9 @@ module.exports = (app) => {
     })
     app.post('/contact', async (req, res) => {
         let success = undefined;
+
+        let errorMessages = []
+
         let contact_name = req.body.name;
         let contact_email = req.body.mail;
         let contact_phone = req.body.phone;
@@ -92,47 +95,71 @@ module.exports = (app) => {
 
         let parsedPhoneNumber = Number(parseInt(contact_phone));
 
-        if (!contact_name == "" && contact_name.length > 1) {
-            if (!contact_email == "" && contact_email.length > 1 && validateEmail(contact_email)) {
-                if (!contact_phone == "" && contact_phone.length > 1 && !isNaN(parsedPhoneNumber)) {
-                    if (!contact_subject == "" && contact_subject.length > 1) {
-                        if (!contact_message == "" && contact_message.length > 1) {
-                            let date = new Date()
-                            let db = await mysql.connect();
-                            let result = await db.execute(`
-                                INSERT INTO contactmessages 
-                                SET name = ?, 
-                                email = ?, 
-                                phone = ?, 
-                                subject = ?, 
-                                message = ?, 
-                                contactTime = ?`
-                                , [contact_name, contact_email, contact_phone, contact_subject, contact_message, date]);
-                            db.end();
-
-                            if (result[0].affectedRows > 0) {
-                                success = true
-                            } else {
-                                success = false
-                            }
-
-                        }
-                    }
-                }
-            }
-        }
         let db = await mysql.connect();
         let GamesNavData = await db.execute(`
         SELECT name,
         id
         FROM games
           `)
-          db.end();
-        res.render("contact", {
-            page: "Contact",
-            "gamesNav": GamesNavData[0],
-            success: success,
-        })
+        db.end();
+
+        if(contact_name == "" && contact_name.length < 1){
+            errorMessages.push("Please check Name box")
+        }
+
+        if(contact_email == "" && contact_email.length < 1 || !validateEmail(contact_email)){
+            
+            errorMessages.push("Please check Email box")
+        }
+
+        if(contact_phone == "" && contact_phone.length < 1){
+            errorMessages.push("Please check Phone box")
+        }
+
+        if(contact_subject == "" && contact_subject.length < 1){
+            errorMessages.push("Please check subject box")
+        }
+
+        if(contact_message == "" && contact_message.length < 1){
+            errorMessages.push("Please check message box")
+        }
+        
+        if(errorMessages.length > 0){
+            sucess = false
+
+            res.render("contact", {
+                page: "Contact",
+                "gamesNav": GamesNavData[0],
+                success: success,
+            })
+        }else{
+            let date = new Date()
+            let db = await mysql.connect();
+            let result = await db.execute(`
+                INSERT INTO contactmessages 
+                SET name = ?, 
+                email = ?, 
+                phone = ?, 
+                subject = ?, 
+                message = ?, 
+                contactTime = ?`
+                , [contact_name, contact_email, contact_phone, contact_subject, contact_message, date]);
+            db.end();
+
+            if (result[0].affectedRows > 0) {
+                success = true
+            } else {
+                success = false
+            }
+
+            res.render("contact", {
+                page: "Contact",
+                "gamesNav": GamesNavData[0],
+                success: success,
+            })
+        }
+
+
     })
 
     function validateEmail(email) {
