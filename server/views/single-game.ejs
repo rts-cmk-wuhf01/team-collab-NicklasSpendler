@@ -1,0 +1,42 @@
+<%- include("partials/head") %>
+
+<%- include("partials/header") %>
+
+<%- include("partials/underside-banner") %>
+
+<div class="wrapper">
+
+	<img src="/img/games/<%= game.img %>" alt="Picture of game" id="gamePic">
+
+	<div id="gameContainer">
+		<div class="gameInfo">
+			<div class="gameCategories">
+				<a href="#" class="gameCategory">Kategori 1</a>
+				<a href="#" class="gameCategory">Kategori 2</a>
+			</div>
+			<p class="gameDate"><%- dateAndTime.format(game.releaseDate, 'MMMM DD, YYYY') %></p>
+			<h3 class="gameTitle"><%= game.name %></h3>
+			<p class="gameSummary">Dinosaurs, Creatures, & Breeding! -- over 100+ creatures can be tamed using a challenging capture-&-affinity process, involving weakening a feral creature to knock it unconscious, and then nursing it back to health with appropriate food. Once tamed, you can issue commands to your tames, which it may follow depending on how well you’ve tamed and trained it. Tames, which can continue to level-up and consume food, can also carry Inventory and Equipment such as Armor, carry prey back to your settlement depending on their strength, and larger tames can be ridden and directly controlled! Fly a Pterodactyl over the snow-capped mountains, lift allies over enemy walls, race through the jungle with a pack of Raptors, tromp through an enemy base along a gigantic brontosaurus, or chase down prey on the back of a raging T-Rex! Take part in a dynamic ecosystem life-cycle with its own predator & prey hierarchies, where you are just one creature among many species struggling for dominance and survival. Tames can also be mated with the opposite gender, to selectively breed successive generations using a trait system based on recombinant genetic inheritance. This process includes both egg-based incubation and mammalian gestation lifecycles! Or put more simply, raise babies!</p>
+			<p class="gamePrice"><%= game.price %></p>
+		</div>
+		<div class="gameNews">
+			<h4 class="newsTitle">Latest News about <%= game.name %></h3>
+			<a href="#" class="allNews">All News</a>
+			<% articles.forEach(article => { %>
+				<div class="newsArticle">
+					<div class="articleLeft">
+						<p class="articleTitle"><%= article.title %></p>
+						<p class="articleDate"><%- dateAndTime.format(article.postTime, 'MMMM DD, YYYY HH:mm') %></p>
+						<a href="#" class="articleLink">Full Article</a>
+					</div>
+					<div class="articleRight">
+						<img src="/img/games/<%= game.img %>" class="articleImage">
+					</div>
+				</div>
+			<% }) %>
+		</div>
+	</div>
+
+</div>
+
+<%- include("partials/footer") %>

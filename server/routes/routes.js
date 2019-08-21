@@ -32,7 +32,22 @@ module.exports = (app) => {
             page: "Store",
             "gamesNav": GamesNavData[0]
         })
-    })
+    });
+
+    app.get("/game/:game_id", async (req, res) => {
+
+        let db = await mysql.connect();
+        let [gameData] = await db.execute("SELECT * FROM games WHERE id = ?", [req.params.game_id]);
+        let [newsData] = await db.execute("SELECT * FROM newsposts WHERE fkGame = ? ORDER BY postTime DESC LIMIT 3", [req.params.game_id]);
+        db.end();
+
+        res.render("single-game", {
+            game: gameData[0],
+            articles: newsData,
+            page: gameData[0].name
+        });
+    });
+
     app.get('/contact', async (req, res) => {
         let db = await mysql.connect();
         let GamesNavData = await db.execute(`
