@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Vært: 127.0.0.1
--- Genereringstid: 20. 08 2019 kl. 14:57:58
--- Serverversion: 10.1.30-MariaDB
--- PHP-version: 7.2.1
+-- Host: 127.0.0.1
+-- Generation Time: Aug 21, 2019 at 10:40 AM
+-- Server version: 10.3.15-MariaDB
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `contactmessages`
+-- Table structure for table `contactmessages`
 --
 
 CREATE TABLE `contactmessages` (
@@ -39,7 +39,7 @@ CREATE TABLE `contactmessages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Data dump for tabellen `contactmessages`
+-- Dumping data for table `contactmessages`
 --
 
 INSERT INTO `contactmessages` (`id`, `name`, `email`, `phone`, `subject`, `message`, `contactTime`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `contactmessages` (`id`, `name`, `email`, `phone`, `subject`, `messa
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `games`
+-- Table structure for table `games`
 --
 
 CREATE TABLE `games` (
@@ -63,7 +63,7 @@ CREATE TABLE `games` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Data dump for tabellen `games`
+-- Dumping data for table `games`
 --
 
 INSERT INTO `games` (`id`, `name`, `img`, `price`, `description`, `releaseDate`) VALUES
@@ -77,7 +77,60 @@ INSERT INTO `games` (`id`, `name`, `img`, `price`, `description`, `releaseDate`)
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `images`
+-- Table structure for table `genre`
+--
+
+CREATE TABLE `genre` (
+  `id` int(11) NOT NULL,
+  `name` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `genre`
+--
+
+INSERT INTO `genre` (`id`, `name`) VALUES
+(1, 'Action'),
+(2, 'Adventure'),
+(3, 'RPG'),
+(4, 'FPS'),
+(5, 'SCi-FI'),
+(6, 'Open World');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `genremanager`
+--
+
+CREATE TABLE `genremanager` (
+  `id` int(11) NOT NULL,
+  `fkGameID` int(11) NOT NULL,
+  `fkGenreID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `genremanager`
+--
+
+INSERT INTO `genremanager` (`id`, `fkGameID`, `fkGenreID`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 6, 3),
+(4, 6, 6),
+(6, 2, 1),
+(7, 2, 3),
+(8, 3, 1),
+(9, 3, 2),
+(10, 4, 1),
+(11, 4, 4),
+(12, 5, 6),
+(13, 5, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `images`
 --
 
 CREATE TABLE `images` (
@@ -87,7 +140,7 @@ CREATE TABLE `images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Data dump for tabellen `images`
+-- Dumping data for table `images`
 --
 
 INSERT INTO `images` (`id`, `src`, `gameFK`) VALUES
@@ -107,7 +160,7 @@ INSERT INTO `images` (`id`, `src`, `gameFK`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `newsposts`
+-- Table structure for table `newsposts`
 --
 
 CREATE TABLE `newsposts` (
@@ -120,7 +173,7 @@ CREATE TABLE `newsposts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Data dump for tabellen `newsposts`
+-- Dumping data for table `newsposts`
 --
 
 INSERT INTO `newsposts` (`id`, `title`, `description`, `img`, `postTime`, `fkGame`) VALUES
@@ -132,56 +185,80 @@ INSERT INTO `newsposts` (`id`, `title`, `description`, `img`, `postTime`, `fkGam
 (6, 'Community Crunch 194: Genesis, Public Beta, and On The Horizon', 'Last week we introduced a new chapter in the ARK saga: Genesis.  By purchasing the season pass, you obtain a brand new H.L.N.A companion.  Are you enjoying H.L.N.A.\'s company on your adventures?  Genesis will be a brand new experience for old and new players alike.  Check out our live stream if you\'re looking for more details on what to expect! ', 'ark_news1.jpg', '2019-08-12 00:00:00', 1);
 
 --
--- Begrænsninger for dumpede tabeller
+-- Indexes for dumped tables
 --
 
 --
--- Indeks for tabel `games`
+-- Indexes for table `games`
 --
 ALTER TABLE `games`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks for tabel `images`
+-- Indexes for table `genre`
+--
+ALTER TABLE `genre`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `genremanager`
+--
+ALTER TABLE `genremanager`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id`),
   ADD KEY `gameFK` (`gameFK`);
 
 --
--- Indeks for tabel `newsposts`
+-- Indexes for table `newsposts`
 --
 ALTER TABLE `newsposts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Brug ikke AUTO_INCREMENT for slettede tabeller
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- Tilføj AUTO_INCREMENT i tabel `games`
+-- AUTO_INCREMENT for table `games`
 --
 ALTER TABLE `games`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Tilføj AUTO_INCREMENT i tabel `images`
+-- AUTO_INCREMENT for table `genre`
+--
+ALTER TABLE `genre`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `genremanager`
+--
+ALTER TABLE `genremanager`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Tilføj AUTO_INCREMENT i tabel `newsposts`
+-- AUTO_INCREMENT for table `newsposts`
 --
 ALTER TABLE `newsposts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Begrænsninger for dumpede tabeller
+-- Constraints for dumped tables
 --
 
 --
--- Begrænsninger for tabel `images`
+-- Constraints for table `images`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`gameFK`) REFERENCES `games` (`id`);
