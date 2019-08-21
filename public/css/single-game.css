@@ -128,14 +128,19 @@
 	font-size: 5em;
 	position: absolute;
 	top:50%;
-	opacity: 0.4;
+	transform: translateY(-50%);
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 5px 11px;
+
 }
 
-.fa-angle-right{	
+.fa-angle-right{
+	padding: 5px 11px;
 	cursor: pointer;
 	right:0%;	
 	font-size: 5em;
 	position: absolute;
+	transform: translateY(-50%);
 	top:50%;
-	opacity: 0.4;
+	background-color: rgba(0, 0, 0, 0.5);
 }
