@@ -61,3 +61,7 @@
 .grid-box-genre a:last-of-type::after{
     content: "";
 }
+.grid-box-buybtn{
+    margin-top: 1em;
+    text-align: center;
+}
