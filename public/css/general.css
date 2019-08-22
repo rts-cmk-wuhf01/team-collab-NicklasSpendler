@@ -44,10 +44,18 @@ a:hover{
     color: white;
 }
 .button--white{
-    color: #42CFD7;
+    color: #05e805;
     background-color: white;
 }
 .button--white:hover{
     background: #42CFD7;
     color: white;
+}
+.button--success{
+    color: white;
+    background-color: #05e805;
+}
+.button--success:hover{
+    background: white;
+    color: #05e805;
 }
