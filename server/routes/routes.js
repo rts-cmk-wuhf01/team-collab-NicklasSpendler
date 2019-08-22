@@ -4,7 +4,7 @@ module.exports = (app) => {
 
     app.get('/', async (req, res) => {
         let db = await mysql.connect();
-        let [newsData] = await db.execute("SELECT title,newsposts.description as description,newsposts.id as articleID,newsposts.img as img,postTime,games.id as gameid, games.name as gamename FROM newsposts INNER JOIN games on fkGame = games.id ORDER BY postTime DESC")
+        let [newsData] = await db.execute("SELECT title,newsposts.description as description,newsposts.img as img,postTime,games.id as gameid, games.name as gamename FROM newsposts INNER JOIN games on fkGame = games.id ORDER BY postTime DESC")
         let GamesNavData = await db.execute(`
         SELECT name,
         id
@@ -19,13 +19,62 @@ module.exports = (app) => {
         })
     });
 
+    app.get('/singlepost/:articleID', async (req, res) => {
+        let db = await mysql.connect();
+        let [newsData] = await db.execute(`SELECT title,
+        newsposts.text as description,
+        newsposts.img as img,postTime,
+        games.id as gameid,
+        games.name as gamename 
+        FROM newsposts
+        INNER JOIN games on fkGame = games.id
+        WHERE newsposts.id = ?
+         `, [req.params.articleID])
+        let GamesNavData = await db.execute(`
+        SELECT name,
+        id
+        FROM games
+          `)
+
+        let [comments] = await db.execute(`
+        SELECT name,
+        message
+        FROM comments
+        `)
+
+        db.end();
+        res.render("singlepost", {
+            "newsPosts": newsData,
+            page: newsData[0].gamename,
+            "gamesNav": GamesNavData[0]
+        })
+    });
+
+    app.post('/singlepost/:articleID', async (req, res) => {
+
+        let contact_name = req.body.name;
+        let contact_message = req.body.message;
+        
+        let db = await mysql.connect();
+        let GamesNavData = await db.execute(`
+        SELECT name,
+        id
+        FROM games
+          `)
+        let result = await db.execute(`
+          INSERT INTO comments
+          SET name = ?, 
+          message = ?
+          INNER JOIN newsposts on commentsFK = newsposts.id , 
+          ` , [contact_name, contact_message]);
+        db.end();
+
+        res.redirect("/singlepost/"+req.params.articleID)
+    })
 
 
     app.get('/store', async (req, res) => {
         let db = await mysql.connect();
-
-        let [genres] = await db.execute("SELECT * FROM genre")
-
         let [gamesData] = await db.execute("SELECT * FROM games ORDER BY releaseDate DESC")
         let GamesNavData = await db.execute(`
         SELECT name,
@@ -55,8 +104,7 @@ module.exports = (app) => {
             res.render("store", {
                 "games": gamesData,
                 page: "Store",
-                "gamesNav": GamesNavData[0],
-                allGenres: genres
+                "gamesNav": GamesNavData[0]
             })
         }
 
@@ -69,7 +117,7 @@ module.exports = (app) => {
         console.log(gamename)
         let db = await mysql.connect();
         let [gameData] = await db.execute("SELECT * FROM games WHERE name = ?", [gamename]);
-        let [newsData] = await db.execute("SELECT *,newsposts.id as articleID FROM newsposts INNER JOIN games on fkGame = games.id WHERE games.name = ?  ORDER BY postTime DESC LIMIT 3", [gamename]);
+        let [newsData] = await db.execute("SELECT * FROM newsposts INNER JOIN games on fkGame = games.id WHERE games.name = ?  ORDER BY postTime DESC LIMIT 3", [gamename]);
         let GamesNavData = await db.execute(`
         SELECT name,
         id
@@ -204,9 +252,8 @@ module.exports = (app) => {
         let [newsData] = await db.execute(`SELECT title,
         newsposts.description as description,
         newsposts.img as img,postTime,
-        newsposts.id as articleID,
         games.id as gameid, 
-        games.name as gamename
+        games.name as gamename 
         FROM newsposts
         INNER JOIN games on fkGame = games.id
         WHERE fkGame = ?
@@ -227,44 +274,20 @@ module.exports = (app) => {
         })
     });
 
-    app.get('/test/sortbar', async(req,res)=>{
-
-        let db = await mysql.connect();
-
-        let [genres] = await db.execute("SELECT * FROM genre")
-
-        db.end();
-
-        res.send(genres)
-
-
-    })
-
-    app.get('/store/genre/:genreName', async(req,res) =>{
+    app.get('/store/genre/:genreName', async (req, res) => {
 
         let genreName = req.params.genreName;
-        genreName = genreName.replace(/_/g," ")
-        
+        genreName = genreName.replace(/_/g, " ")
+
         let db = await mysql.connect();
-
-        let [genres] = await db.execute("SELECT * FROM genre")
-
-        let GamesNavData = await db.execute(`
-        SELECT name,
-        id
-        FROM games
-        `)
-
         let [chosenGenre] = await db.execute(`SELECT *, games.id as gameID, games.name as gameName FROM genremanager
         inner join games on fkGameID = games.id
         inner join genre on fkGenreID = genre.id
         where genre.name = ?`, [genreName])
 
         let gamesCounter = 0;
-        if(chosenGenre.length == 0){
-            renderGenrePage()
-        }
-        chosenGenre.forEach( async (game, index)  => {
+
+        chosenGenre.forEach(async (game, index) => {
             game.genres = [];
             let [genreData] = await db.execute(`SELECT genre.name, genre.id FROM genremanager
             INNER join genre on fkGenreID = genre.id
@@ -274,21 +297,16 @@ module.exports = (app) => {
                 game.genres.push(genre);
             });
             gamesCounter++;
-
-            if(gamesCounter == chosenGenre.length){
+            if (gamesCounter == chosenGenre.length) {
                 renderGenrePage()
             }
         });
-        
         db.end();
-        console.log(chosenGenre)
 
         function renderGenrePage() {
             res.render("genre", {
                 games: chosenGenre,
-                page: "Genre: " + req.params.genreName,
-                "gamesNav": GamesNavData[0],
-                allGenres: genres
+                page: "View genre: " + req.params.genreName
             })
         }
     })
