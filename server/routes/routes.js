@@ -260,6 +260,7 @@ module.exports = (app) => {
     app.get('/newsposts/:gameId', async (req, res) => {
         let db = await mysql.connect();
         let [newsData] = await db.execute(`SELECT title,
+        newsposts.id as articleID, 
         newsposts.description as description,
         newsposts.img as img,postTime,
         games.id as gameid, 
