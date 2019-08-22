@@ -38,13 +38,13 @@
 				<% articles.forEach(article => { %>
 				<div class="newsArticle">
 					<div class="articleLeft">
-						<p class="articleTitle"><%= article.title %></p>
+						<a href="/singlepost/<%-article.articleID%>"> <p class="articleTitle"><%= article.title %></p></a>
 						<p class="articleDate"><%- dateAndTime.format(article.postTime, 'MMMM DD, YYYY HH:mm') %>
 						</p>
-						<a href="#" class="articleLink">Full Article</a>
+						<a href="/singlepost/<%-article.articleID%>" class="articleLink">Full Article</a>
 					</div>
 					<div class="articleRight">
-						<img src="/img/games/<%= game.img %>" class="articleImage">
+							<a href="/singlepost/<%-article.articleID%>"><img src="/img/games/<%= game.img %>" class="articleImage"></a>
 					</div>
 				</div>
 				<% }) %>

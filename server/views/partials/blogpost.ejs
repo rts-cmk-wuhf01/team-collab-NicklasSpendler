@@ -3,14 +3,14 @@
     <div class="blog-post">
     <div class="blog-post__left">
         <a href="/game/<%- newsPost.gamename.replace(/ /g,"_").toLowerCase() %>" class="blog-post__gametitle"><%- newsPost.gamename%></a>
-        <h1 class="blog-post__header"><%- newsPost.title%></h1>
+        <a href="/singlepost/<%-newsPost.articleID%>"><h1 class="blog-post__header"><%- newsPost.title%></h1></a>
         <p class="blog-post__postdate"><%- dateAndTime.format(newsPost.postTime, 'MMMM DD, YYYY HH:mm') %></p>
         <p class="blog-post__textcontent"><%- newsPost.description%></p>
 
-        <a href="#" class="button button--gradient">Read More</a>
+        <a href="/singlepost/<%-newsPost.articleID%>" class="button button--gradient">Read More</a>
     </div>
     <div class="blog-post__right">
-        <img class="blog-post__img" src="/img/news/<%- newsPost.img %>" alt="">
+        <a href="/singlepost/<%-newsPost.articleID%>"><img class="blog-post__img" src="/img/news/<%- newsPost.img %>" alt=""></a>
     </div>
 </div>
 
