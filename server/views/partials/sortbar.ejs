@@ -1,0 +1,11 @@
+<nav class="genreSorter">
+    <div class="dropdown__genreSorter">
+        <p class="dropdown__text">Genres <i class="fa fa-caret-down" aria-hidden="true"></i> </p>
+        <ul class="genreSorter__genres">
+            <% allGenres.forEach(genre => { %>
+                <a href="/store/genre/<%- genre.name %>"><li class="genreSorter__genre"><%- genre.name %></li></a>
+            <% }); %>
+            
+        </ul>
+    </div>
+</nav>

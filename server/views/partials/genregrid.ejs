@@ -1,4 +1,5 @@
         <div class="grid-games">
+        <% if(games.length > 0){%>
             <% games.forEach(game => { %>
                 <div class="single-grid-box">
                     <a href="/game/<%- game.gameName.replace(/ /g,"_").toLowerCase()%>">
@@ -22,4 +23,7 @@
                     </div>
                 </div>
             <% }); %>
+        <%}else{%>
+        <h1>No results founds...</h1>
+            <%}%>
         </div>

@@ -1,43 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/game-grid.css">
-    <link rel="stylesheet" href="/css/general.css">
-</head>
-
-<body>
-    <div class="wrapper">
-        <div class="grid-games">
-
-            <% games.forEach(game => { %>
-            <div class="single-grid-box">
-                <a href="/game/<%- game.name.replace(/ /g,"_").toLowerCase()%>"><div class="grid-box-img">
-                    <img src="/img/games/<%- game.img%>" alt="">
-                </div></a>
-                <div class="grid-box-content">
-                    <p class="grid-box-date"><%- dateAndTime.format(game.releaseDate, 'MMMM DD, YYYY') %></p>
-                    <a href="/game/<%- game.name.replace(/ /g,"_").toLowerCase()%>"><h2 class="grid-box-header"><%- game.name%></h2></a>
-                    <div class="grid-box-genre">
-                        <% game.genres.forEach(genre => { %>
-                            <a href="/store/genre/<%- genre.name.toLowerCase().replace(" ","_")%>"><%- genre.name%></a>
-                        <% }); %>
-                    </div>
-                    <p class="grid-box-textcontent"><%- game.description%></p>
-                    <p class="grid-box-price"><%- game.price%>$</p>
-                    <a href="/game/<%- game.name.replace(/ /g,"_").toLowerCase()%>" class="grid-box-buybtn"><button class="button button--white">BUY</button></a>
+    <div class="grid-games">
+        <% games.forEach(game => { %>
+        <div class="single-grid-box">
+            <a href="/game/<%- game.name.replace(/ /g,"_").toLowerCase()%>"><div class="grid-box-img">
+                <img src="/img/games/<%- game.img%>" alt="">
+            </div></a>
+            <div class="grid-box-content">
+                <p class="grid-box-date"><%- dateAndTime.format(game.releaseDate, 'MMMM DD, YYYY') %></p>
+                <a href="/game/<%- game.name.replace(/ /g,"_").toLowerCase()%>"><h2 class="grid-box-header"><%- game.name%></h2></a>
+                <div class="grid-box-genre">
+                    <% game.genres.forEach(genre => { %>
+                        <a href="/store/genre/<%- genre.name.toLowerCase().replace(" ","_")%>"><%- genre.name%></a>
+                    <% }); %>
                 </div>
+                <p class="grid-box-textcontent"><%- game.description%></p>
+                <p class="grid-box-price"><%- game.price%>$</p>
+                <a href="/game/<%- game.name.replace(/ /g,"_").toLowerCase()%>" class="grid-box-buybtn"><button class="button button--white">BUY</button></a>
             </div>
-            <% }); %>
-
-
-
         </div>
-    </div>
-</body>
-
-</html>
+    <% }); %>
+</div>
