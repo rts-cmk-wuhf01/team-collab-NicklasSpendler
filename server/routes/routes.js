@@ -36,13 +36,41 @@ module.exports = (app) => {
         FROM games
           `)
 
+        let [comments] = await db.execute(`
+        SELECT name,
+        message
+        FROM comments
+        `)
+
         db.end();
         res.render("singlepost", {
             "newsPosts": newsData,
-            page: "Home",
+            page: newsData[0].gamename,
             "gamesNav": GamesNavData[0]
         })
     });
+
+    app.post('/singlepost/:articleID', async (req, res) => {
+
+        let contact_name = req.body.name;
+        let contact_message = req.body.message;
+        
+        let db = await mysql.connect();
+        let GamesNavData = await db.execute(`
+        SELECT name,
+        id
+        FROM games
+          `)
+        let result = await db.execute(`
+          INSERT INTO comments
+          SET name = ?, 
+          message = ?
+          INNER JOIN newsposts on articleFK = newsposts.id, 
+          ` , [contact_name, contact_message]);
+        db.end();
+
+        res.redirect("/singlepost/"+req.params.articleID)
+    })
 
 
     app.get('/store', async (req, res) => {
@@ -55,8 +83,8 @@ module.exports = (app) => {
         `);
 
         let gamesCounter = 0;
-        
-        gamesData.forEach( async (game, index)  => {
+
+        gamesData.forEach(async (game, index) => {
             game.genres = [];
             let [genreData] = await db.execute(`SELECT genre.name, genre.id FROM genremanager
             INNER join genre on fkGenreID = genre.id
@@ -66,11 +94,11 @@ module.exports = (app) => {
                 game.genres.push(genre);
             });
             gamesCounter++;
-            if(gamesCounter == gamesData.length){
+            if (gamesCounter == gamesData.length) {
                 renderPage()
             }
         });
-        
+
         db.end();
         function renderPage() {
             res.render("store", {
@@ -85,7 +113,7 @@ module.exports = (app) => {
     app.get("/game/:gamename", async (req, res) => {
 
         let gamename = req.params.gamename;
-        gamename = gamename.replace(/_/g," ")
+        gamename = gamename.replace(/_/g, " ")
         console.log(gamename)
         let db = await mysql.connect();
         let [gameData] = await db.execute("SELECT * FROM games WHERE name = ?", [gamename]);
@@ -109,13 +137,13 @@ module.exports = (app) => {
         where games.name = ?`, [gamename])
 
         db.end();
-        
+
         res.render("single-game", {
             game: gameData[0],
             articles: newsData,
             page: gameData[0].name,
             "gamesNav": GamesNavData[0],
-            "images":images,
+            "images": images,
             genres: genreData
         });
     });
@@ -127,7 +155,7 @@ module.exports = (app) => {
         id
         FROM games
           `)
-          db.end();
+        db.end();
         res.render("contact", {
             page: "Contact",
             "gamesNav": GamesNavData[0],
@@ -154,28 +182,28 @@ module.exports = (app) => {
           `)
         db.end();
 
-        if(contact_name == "" && contact_name.length < 1){
+        if (contact_name == "" && contact_name.length < 1) {
             errorMessages.push("Please check Name box")
         }
 
-        if(contact_email == "" && contact_email.length < 1 || !validateEmail(contact_email)){
-            
+        if (contact_email == "" && contact_email.length < 1 || !validateEmail(contact_email)) {
+
             errorMessages.push("Please check Email box")
         }
 
-        if(contact_phone == "" && contact_phone.length < 1){
+        if (contact_phone == "" && contact_phone.length < 1) {
             errorMessages.push("Please check Phone box")
         }
 
-        if(contact_subject == "" && contact_subject.length < 1){
+        if (contact_subject == "" && contact_subject.length < 1) {
             errorMessages.push("Please check subject box")
         }
 
-        if(contact_message == "" && contact_message.length < 1){
+        if (contact_message == "" && contact_message.length < 1) {
             errorMessages.push("Please check message box")
         }
-        
-        if(errorMessages.length > 0){
+
+        if (errorMessages.length > 0) {
             sucess = false
 
             res.render("contact", {
@@ -183,7 +211,7 @@ module.exports = (app) => {
                 "gamesNav": GamesNavData[0],
                 success: success,
             })
-        }else{
+        } else {
             let date = new Date()
             let db = await mysql.connect();
             let result = await db.execute(`
@@ -231,14 +259,14 @@ module.exports = (app) => {
         WHERE fkGame = ?
         ORDER BY postTime DESC
         `, [req.params.gameId])
-        
+
         let GamesNavData = await db.execute(`
      SELECT name,
      id
      FROM games
        `)
         db.end();
-       
+
         res.render("gamenews", {
             "newsPosts": newsData,
             page: newsData[0].gamename + " news",
@@ -246,10 +274,10 @@ module.exports = (app) => {
         })
     });
 
-    app.get('/store/genre/:genreName', async(req,res) =>{
+    app.get('/store/genre/:genreName', async (req, res) => {
 
         let genreName = req.params.genreName;
-        genreName = genreName.replace(/_/g," ")
+        genreName = genreName.replace(/_/g, " ")
 
         let db = await mysql.connect();
         let [chosenGenre] = await db.execute(`SELECT *, games.id as gameID, games.name as gameName FROM genremanager
@@ -258,8 +286,8 @@ module.exports = (app) => {
         where genre.name = ?`, [genreName])
 
         let gamesCounter = 0;
-        
-        chosenGenre.forEach( async (game, index)  => {
+
+        chosenGenre.forEach(async (game, index) => {
             game.genres = [];
             let [genreData] = await db.execute(`SELECT genre.name, genre.id FROM genremanager
             INNER join genre on fkGenreID = genre.id
@@ -269,7 +297,7 @@ module.exports = (app) => {
                 game.genres.push(genre);
             });
             gamesCounter++;
-            if(gamesCounter == chosenGenre.length){
+            if (gamesCounter == chosenGenre.length) {
                 renderGenrePage()
             }
         });

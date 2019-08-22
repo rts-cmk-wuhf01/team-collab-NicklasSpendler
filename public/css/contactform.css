@@ -130,6 +130,7 @@
 	border-radius: 10px;
 	
 }
+
 .form-control {
 	width:50%;
 	border: 2px solid rgba(255,255,255,0.05);
@@ -141,8 +142,18 @@
 	cursor:text;
 	background-color: #292945;
 	color:#fff;
-	
-	
+}
+.form-control-name{
+	width:30;
+	border: 2px solid rgba(255,255,255,0.05);
+	border-radius: 10px;
+	outline:none;
+	padding: 2%;
+	font-size: 12px;
+	margin-bottom:1vh;
+	cursor:text;
+	background-color: #292945;
+	color:#fff;
 }
 
 textarea::placeholder{
@@ -154,38 +165,13 @@ textarea::placeholder{
 	
 }
 
+#comment-btn{
+	margin-bottom: 1em;
+}
+
 input::placeholder{
 
 font-family: 'Open Sans', sans-serif;
 
 }
 
-form .submit {
-	font-family: 'Open Sans', sans-serif;
-	padding-left:1.5%;
-	border:none;
-	width:20%;
-	color:#FFF;
-	font-size:16px;
-	font-weight: 400;
-	background-color: #292945;
-	text-align: left;
-}
-
-.fa-envelope{
-	color:#fff;
-	font-size:1.5em;
-	padding-top: 1px;
-	
-}
-
-#send_knap{
-	text-align: right;
-	width:10%;
-	border-radius: 10px;
-	outline:none;
-	padding: 2%;
-	font-size: 12px;
-	margin-bottom:1vh;
-	cursor:text;
-}

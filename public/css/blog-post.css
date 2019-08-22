@@ -39,6 +39,10 @@
 
 /* Singlepost */
 
+#send-knap{
+    margin-bottom: 1em;
+}
+
 #single-post__top-img{
     width:100%;
 }
