@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 22, 2019 at 11:25 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.1
+-- Vært: 127.0.0.1
+-- Genereringstid: 22. 08 2019 kl. 15:00:12
+-- Serverversion: 10.1.30-MariaDB
+-- PHP-version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contactmessages`
+-- Struktur-dump for tabellen `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `message` varchar(500) NOT NULL,
+  `articleFK` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `contactmessages`
 --
 
 CREATE TABLE `contactmessages` (
@@ -39,7 +52,7 @@ CREATE TABLE `contactmessages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `contactmessages`
+-- Data dump for tabellen `contactmessages`
 --
 
 INSERT INTO `contactmessages` (`id`, `name`, `email`, `phone`, `subject`, `message`, `contactTime`) VALUES
@@ -50,7 +63,7 @@ INSERT INTO `contactmessages` (`id`, `name`, `email`, `phone`, `subject`, `messa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `games`
+-- Struktur-dump for tabellen `games`
 --
 
 CREATE TABLE `games` (
@@ -64,7 +77,7 @@ CREATE TABLE `games` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `games`
+-- Data dump for tabellen `games`
 --
 
 INSERT INTO `games` (`id`, `name`, `img`, `price`, `description`, `text`, `releaseDate`) VALUES
@@ -78,7 +91,7 @@ INSERT INTO `games` (`id`, `name`, `img`, `price`, `description`, `text`, `relea
 -- --------------------------------------------------------
 
 --
--- Table structure for table `genre`
+-- Struktur-dump for tabellen `genre`
 --
 
 CREATE TABLE `genre` (
@@ -87,7 +100,7 @@ CREATE TABLE `genre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `genre`
+-- Data dump for tabellen `genre`
 --
 
 INSERT INTO `genre` (`id`, `name`) VALUES
@@ -101,7 +114,7 @@ INSERT INTO `genre` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `genremanager`
+-- Struktur-dump for tabellen `genremanager`
 --
 
 CREATE TABLE `genremanager` (
@@ -111,7 +124,7 @@ CREATE TABLE `genremanager` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `genremanager`
+-- Data dump for tabellen `genremanager`
 --
 
 INSERT INTO `genremanager` (`id`, `fkGameID`, `fkGenreID`) VALUES
@@ -131,7 +144,7 @@ INSERT INTO `genremanager` (`id`, `fkGameID`, `fkGenreID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `images`
+-- Struktur-dump for tabellen `images`
 --
 
 CREATE TABLE `images` (
@@ -141,35 +154,35 @@ CREATE TABLE `images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `images`
+-- Data dump for tabellen `images`
 --
 
 INSERT INTO `images` (`id`, `src`, `gameFK`) VALUES
-(1, 'ark1', 1),
-(2, 'ark2', 1),
-(3, 'assassinscreed1', 6),
-(4, 'assassinscreed2', 6),
-(5, 'crysis1', 4),
-(6, 'crysis2', 4),
-(7, 'darq1', 3),
-(8, 'darq2', 3),
-(9, 'thewitcher1', 5),
-(10, 'thewitcher2', 5),
-(11, 'remnant1', 2),
-(12, 'remnant2', 2),
-(13, 'ark3', 1),
-(14, 'ark4', 1),
-(15, 'ark5', 1),
-(16, 'assassinscreed3', 6),
-(17, 'assassinscreed4', 6),
-(18, 'assassinscreed5', 6),
-(19, 'crysis3', 4),
-(20, 'crysis4', 4),
-(21, 'crysis5', 4),
-(22, 'darq3', 3),
-(23, 'darq4', 3),
-(24, 'darq5', 3),
-(25, 'remnant3', 2),
+(1, 'ark1.jpg', 1),
+(2, 'ark2.jpg', 1),
+(3, 'assassinscreed1.jpg', 6),
+(4, 'assassinscreed2.jpg', 6),
+(5, 'crysis1.jpg', 4),
+(6, 'crysis2.jpg', 4),
+(7, 'darq1.jpg', 3),
+(8, 'darq2.jpg', 3),
+(9, 'thewitcher1.jpg', 5),
+(10, 'thewitcher2.jpg', 5),
+(11, 'remnant1.jpg', 2),
+(12, 'remnant2.jpg', 2),
+(13, 'ark3.jpg', 1),
+(14, 'ark4.jpg', 1),
+(15, 'ark5.jpg', 1),
+(16, 'assassinscreed3.jpg', 6),
+(17, 'assassinscreed4.jpg', 6),
+(18, 'assassinscreed5.jpg', 6),
+(19, 'crysis3.jpg', 4),
+(20, 'crysis4.jpg', 4),
+(21, 'crysis5.jpg', 4),
+(22, 'darq3.jpg', 3),
+(23, 'darq4.jpg', 3),
+(24, 'darq5.jpg', 3),
+(25, 'remnant3.jpg', 2),
 (26, 'remnant4', 2),
 (27, 'remnant5', 2),
 (28, 'thewitcher3', 5),
@@ -179,7 +192,7 @@ INSERT INTO `images` (`id`, `src`, `gameFK`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `newsposts`
+-- Struktur-dump for tabellen `newsposts`
 --
 
 CREATE TABLE `newsposts` (
@@ -188,97 +201,117 @@ CREATE TABLE `newsposts` (
   `description` varchar(500) NOT NULL,
   `img` varchar(250) NOT NULL,
   `postTime` datetime NOT NULL,
-  `fkGame` int(11) NOT NULL
+  `fkGame` int(11) NOT NULL,
+  `text` varchar(10000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `newsposts`
+-- Data dump for tabellen `newsposts`
 --
 
-INSERT INTO `newsposts` (`id`, `title`, `description`, `img`, `postTime`, `fkGame`) VALUES
-(1, 'This Month in Assassin’s Creed – August 2019 Update', 'Players will no longer be able to apply the Sphinx Mane set bonus to other set items.\r\nAddressed several issues with the Rage ability in combat.\r\nAddressed an issue that caused the Call to Arms ability to be locked after Level 81.\r\nAddressed an issue preventing players from using the NPC locking mechanic while Rage is enabled.', 'assassins_creed_odyssey_news1.jpg', '2019-08-06 00:00:00', 6),
-(2, 'The Witcher 3 next gen status', 'Built exclusively for next generation hardware, the REDengine 3 renders the world of The Witcher visually nuanced and organic, a real true to life fantasy.\r\nDynamic weather systems and day/night cycles affect how the citizens of the towns and the monsters of the wilds behave.\r\nRich with storyline choices in both main and subplots, this grand open world is influenced by the player unlike ever before.', 'the_witcher_3_news1.jpg', '2019-06-19 00:00:00', 5),
-(3, '\'But can it run Crysis?\'—10 years of a PC gaming meme', 'At a time when few games required throwing out your aging PC and starting anew, Crysis ignored the development plateau introduced by consoles and forced everyone to save up for pricey hardware for the first time in a long time. ', 'crysis2_news1.jpg', '2017-11-13 00:00:00', 4),
-(4, 'Darq developer reveals why he turned down Epic Store exclusivity', 'The developer of horror-filled puzzle game Darq turned down an Epic Games Store exclusivity deal, he revealed this week, and has called on Epic to allow indie games to sell simultaneously on the store and via Steam.', 'darq_news1.jpg', '2019-08-18 00:00:00', 3),
-(5, 'Known Issues - VIP Preview Weekend', 'These are the known issues you may experience in the VIP Preview Weekend build of Remnant: From the Ashes. Our team is aware of these issues and working to resolve them in a future update. Thank you for your patience and understanding. For technical issues, please contact official Arc support.', 'remnant_news1.jpg', '2019-08-15 06:05:38', 2),
-(6, 'Community Crunch 194: Genesis, Public Beta, and On The Horizon', 'Last week we introduced a new chapter in the ARK saga: Genesis.  By purchasing the season pass, you obtain a brand new H.L.N.A companion.  Are you enjoying H.L.N.A.\'s company on your adventures?  Genesis will be a brand new experience for old and new players alike.  Check out our live stream if you\'re looking for more details on what to expect! ', 'ark_news1.jpg', '2019-08-12 00:00:00', 1);
+INSERT INTO `newsposts` (`id`, `title`, `description`, `img`, `postTime`, `fkGame`, `text`) VALUES
+(1, 'This Month in Assassin’s Creed – August 2019 Update', 'Players will no longer be able to apply the Sphinx Mane set bonus to other set items.\r\nAddressed several issues with the Rage ability in combat.\r\nAddressed an issue that caused the Call to Arms ability to be locked after Level 81.\r\nAddressed an issue preventing players from using the NPC locking mechanic while Rage is enabled.', 'assassins_creed_odyssey_news1.jpg', '2019-08-06 00:00:00', 6, 'Combining the base game with 3 massive Expansion Packs, ARK: Survival Evolved Explorer\'s Edition is a ultimate way to get even more dinosaur action! The Explorer\'s Edition gives you access to the mega hit ARK: Survival Evolved as well as the Scorched Earth (available now), Aberration (available now), and Extinction (coming in 2018) Expansion Packs, adding nearly 900 hours of gameplay!\r\n\r\nITEMS INCLU Standard-afsnittet brugt siden 1500-tallet\r\n\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\r\n\r\nAfsnit 1.10.32 fra \"de Finibus Bonorum et Malorum\", skrevet af Cicero i 45 f.kr.\r\n\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\"\r\n\r\n1914-oversættelsen af Rackham\r\n\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"\r\n\r\nAfsnit 1.10.33 fra \"de Finibus Bonorum et Malorum\", skrevet af Cicero i 45 f.kr.\r\n\"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.\"\r\n\r\n1914-oversættelsen af Rackham\r\n\"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.\"'),
+(2, 'The Witcher 3 next gen status', 'Built exclusively for next generation hardware, the REDengine 3 renders the world of The Witcher visually nuanced and organic, a real true to life fantasy.\r\nDynamic weather systems and day/night cycles affect how the citizens of the towns and the monsters of the wilds behave.\r\nRich with storyline choices in both main and subplots, this grand open world is influenced by the player unlike ever before.', 'the_witcher_3_news1.jpg', '2019-06-19 00:00:00', 5, ''),
+(3, '\'But can it run Crysis?\'—10 years of a PC gaming meme', 'At a time when few games required throwing out your aging PC and starting anew, Crysis ignored the development plateau introduced by consoles and forced everyone to save up for pricey hardware for the first time in a long time. ', 'crysis2_news1.jpg', '2017-11-13 00:00:00', 4, ''),
+(4, 'Darq developer reveals why he turned down Epic Store exclusivity', 'The developer of horror-filled puzzle game Darq turned down an Epic Games Store exclusivity deal, he revealed this week, and has called on Epic to allow indie games to sell simultaneously on the store and via Steam.', 'darq_news1.jpg', '2019-08-18 00:00:00', 3, ''),
+(5, 'Known Issues - VIP Preview Weekend', 'These are the known issues you may experience in the VIP Preview Weekend build of Remnant: From the Ashes. Our team is aware of these issues and working to resolve them in a future update. Thank you for your patience and understanding. For technical issues, please contact official Arc support.', 'remnant_news1.jpg', '2019-08-15 06:05:38', 2, ''),
+(6, 'Community Crunch 194: Genesis, Public Beta, and On The Horizon', 'Last week we introduced a new chapter in the ARK saga: Genesis.  By purchasing the season pass, you obtain a brand new H.L.N.A companion.  Are you enjoying H.L.N.A.\'s company on your adventures?  Genesis will be a brand new experience for old and new players alike.  Check out our live stream if you\'re looking for more details on what to expect! ', 'ark_news1.jpg', '2019-08-12 00:00:00', 1, '');
 
 --
--- Indexes for dumped tables
+-- Begrænsninger for dumpede tabeller
 --
 
 --
--- Indexes for table `games`
+-- Indeks for tabel `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `articleFK` (`articleFK`);
+
+--
+-- Indeks for tabel `games`
 --
 ALTER TABLE `games`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indexes for table `genre`
+-- Indeks for tabel `genre`
 --
 ALTER TABLE `genre`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `genremanager`
+-- Indeks for tabel `genremanager`
 --
 ALTER TABLE `genremanager`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `images`
+-- Indeks for tabel `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id`),
   ADD KEY `gameFK` (`gameFK`);
 
 --
--- Indexes for table `newsposts`
+-- Indeks for tabel `newsposts`
 --
 ALTER TABLE `newsposts`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Brug ikke AUTO_INCREMENT for slettede tabeller
 --
 
 --
--- AUTO_INCREMENT for table `games`
+-- Tilføj AUTO_INCREMENT i tabel `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Tilføj AUTO_INCREMENT i tabel `games`
 --
 ALTER TABLE `games`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `genre`
+-- Tilføj AUTO_INCREMENT i tabel `genre`
 --
 ALTER TABLE `genre`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `genremanager`
+-- Tilføj AUTO_INCREMENT i tabel `genremanager`
 --
 ALTER TABLE `genremanager`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `images`
+-- Tilføj AUTO_INCREMENT i tabel `images`
 --
 ALTER TABLE `images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `newsposts`
+-- Tilføj AUTO_INCREMENT i tabel `newsposts`
 --
 ALTER TABLE `newsposts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Constraints for dumped tables
+-- Begrænsninger for dumpede tabeller
 --
 
 --
--- Constraints for table `images`
+-- Begrænsninger for tabel `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`articleFK`) REFERENCES `newsposts` (`id`);
+
+--
+-- Begrænsninger for tabel `images`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`gameFK`) REFERENCES `games` (`id`);
