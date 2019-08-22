@@ -2,7 +2,7 @@
     
     <div class="blog-post">
     <div class="blog-post__left">
-        <a href="/game/<%-newsPost.gameid %>" class="blog-post__gametitle"><%- newsPost.gamename%></a>
+        <a href="/game/<%- newsPost.gamename.replace(/ /g,"_").toLowerCase() %>" class="blog-post__gametitle"><%- newsPost.gamename%></a>
         <h1 class="blog-post__header"><%- newsPost.title%></h1>
         <p class="blog-post__postdate"><%- dateAndTime.format(newsPost.postTime, 'MMMM DD, YYYY HH:mm') %></p>
         <p class="blog-post__textcontent"><%- newsPost.description%></p>

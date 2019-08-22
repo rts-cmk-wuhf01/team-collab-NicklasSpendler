@@ -55,11 +55,14 @@ module.exports = (app) => {
 
     });
 
-    app.get("/game/:game_id", async (req, res) => {
+    app.get("/game/:gamename", async (req, res) => {
 
+        let gamename = req.params.gamename;
+        gamename = gamename.replace(/_/g," ")
+        console.log(gamename)
         let db = await mysql.connect();
-        let [gameData] = await db.execute("SELECT * FROM games WHERE id = ?", [req.params.game_id]);
-        let [newsData] = await db.execute("SELECT * FROM newsposts WHERE fkGame = ? ORDER BY postTime DESC LIMIT 3", [req.params.game_id]);
+        let [gameData] = await db.execute("SELECT * FROM games WHERE name = ?", [gamename]);
+        let [newsData] = await db.execute("SELECT * FROM newsposts INNER JOIN games on fkGame = games.id WHERE games.name = ?  ORDER BY postTime DESC LIMIT 3", [gamename]);
         let GamesNavData = await db.execute(`
         SELECT name,
         id
@@ -70,13 +73,13 @@ module.exports = (app) => {
         games.id
         FROM images
         INNER JOIN games on gameFK = games.id
-        WHERE gameFK = ?
-        `, [req.params.game_id])
+        WHERE games.name = ?
+        `, [gamename])
 
         let [genreData] = await db.execute(`SELECT genre.name FROM genremanager
         INNER join genre on fkGenreID = genre.id
         inner join games on fkGameID = games.id
-        where games.id = ?`, [req.params.game_id])
+        where games.name = ?`, [gamename])
 
         db.end();
         
