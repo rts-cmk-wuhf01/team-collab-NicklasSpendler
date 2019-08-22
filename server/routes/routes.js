@@ -18,6 +18,33 @@ module.exports = (app) => {
             "gamesNav": GamesNavData[0]
         })
     });
+
+    app.get('singlepost/:articleName', async (req, res) => {
+        let db = await mysql.connect();
+        let [newsData] = await db.execute(`SELECT title,
+        newsposts.text as description,
+        newsposts.img as img,
+        postTime,games.id as gameid,
+         games.name as gamename 
+         FROM newsposts 
+         INNER JOIN games on fkGame = games.id 
+         WHERE newsposts.id = ?
+         `, [req.params.articleName])
+        let GamesNavData = await db.execute(`
+        SELECT name,
+        id
+        FROM games
+          `)
+
+        db.end();
+        res.render("home", {
+            "newsPosts": newsData,
+            page: "Home",
+            "gamesNav": GamesNavData[0]
+        })
+    });
+
+
     app.get('/store', async (req, res) => {
         let db = await mysql.connect();
         let [gamesData] = await db.execute("SELECT * FROM games ORDER BY releaseDate DESC")
