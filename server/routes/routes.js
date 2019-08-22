@@ -4,7 +4,7 @@ module.exports = (app) => {
 
     app.get('/', async (req, res) => {
         let db = await mysql.connect();
-        let [newsData] = await db.execute("SELECT title,newsposts.description as description,newsposts.img as img,postTime,games.id as gameid, games.name as gamename FROM newsposts INNER JOIN games on fkGame = games.id ORDER BY postTime DESC")
+        let [newsData] = await db.execute("SELECT title,newsposts.description as description,newsposts.id as articleID,newsposts.img as img,postTime,games.id as gameid, games.name as gamename FROM newsposts INNER JOIN games on fkGame = games.id ORDER BY postTime DESC")
         let GamesNavData = await db.execute(`
         SELECT name,
         id
@@ -70,7 +70,7 @@ module.exports = (app) => {
         console.log(gamename)
         let db = await mysql.connect();
         let [gameData] = await db.execute("SELECT * FROM games WHERE name = ?", [gamename]);
-        let [newsData] = await db.execute("SELECT * FROM newsposts INNER JOIN games on fkGame = games.id WHERE games.name = ?  ORDER BY postTime DESC LIMIT 3", [gamename]);
+        let [newsData] = await db.execute("SELECT *,newsposts.id as articleID FROM newsposts INNER JOIN games on fkGame = games.id WHERE games.name = ?  ORDER BY postTime DESC LIMIT 3", [gamename]);
         let GamesNavData = await db.execute(`
         SELECT name,
         id
@@ -205,8 +205,9 @@ module.exports = (app) => {
         let [newsData] = await db.execute(`SELECT title,
         newsposts.description as description,
         newsposts.img as img,postTime,
+        newsposts.id as articleID,
         games.id as gameid, 
-        games.name as gamename 
+        games.name as gamename
         FROM newsposts
         INNER JOIN games on fkGame = games.id
         WHERE fkGame = ?
@@ -226,34 +227,6 @@ module.exports = (app) => {
             "gamesNav": GamesNavData[0]
         })
     });
-
-    // app.get('/store/genre/:genreName/:sortTime', async(req,res) =>{
-
-    //     console.log('', req.params.genreName, req.params.sortTime)
-
-    //     let db = await mysql.connect();
-
-    //     let [chosenGenre] = await db.execute(`
-    //         SELECT
-    //         *,
-    //         games.id AS gameID,
-    //         games.name AS gameName
-    //         FROM
-    //             genremanager
-    //         INNER JOIN games ON fkGameID = games.id
-    //         INNER JOIN genre ON fkGenreID = genre.id
-    //         WHERE
-    //             genre.name = ?
-    //         ORDER BY
-    //             games.price
-    //         ?
-    //     `,[req.params.genreName, req.params.sortTime])
-
-    //     db.end();
-
-    //     res.send(chosenGenre);
-
-    // })
 
     app.get('/test/sortbar', async(req,res)=>{
 
