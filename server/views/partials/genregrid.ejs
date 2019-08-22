@@ -1,0 +1,25 @@
+        <div class="grid-games">
+            <% games.forEach(game => { %>
+                <div class="single-grid-box">
+                    <a href="/game/<%- game.gameName.replace(/ /g,"_").toLowerCase()%>">
+                        <div class="grid-box-img">
+                            <img src="/img/games/<%- game.img%>" alt="">
+                        </div>
+                    </a>
+                    <div class="grid-box-content">
+                        <p class="grid-box-date"><%- dateAndTime.format(game.releaseDate, 'MMMM DD, YYYY') %></p>
+                        <a href="/game/<%- game.gameName.replace(/ /g,"_").toLowerCase() %>">
+                            <h2 class="grid-box-header"><%- game.gameName %></h2>
+                        </a>
+                        <div class="grid-box-genre">
+                            <% game.genres.forEach(genre => { %>
+                                <a href="/store/genre/<%- genre.name.toLowerCase().replace(" ","_")%>"> <%- genre.name %></a>
+                            <% }); %>
+                        </div>
+                        <p class="grid-box-textcontent"><%- game.description%></p>
+                        <p class="grid-box-price"><%- game.price%>$</p>
+                        <a href="/game/<%- game.gameName.replace(/ /g,"_").toLowerCase()%>" class="grid-box-buybtn"><button class="button button--white">BUY</button></a>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
