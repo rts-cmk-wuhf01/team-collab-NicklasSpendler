@@ -209,4 +209,30 @@ module.exports = (app) => {
         })
     });
 
+    app.get('/store/genre/:genreName', async(req,res) =>{
+
+        let db = await mysql.connect();
+        let [chosenGenre] = await db.execute(`SELECT *, games.name as gameName FROM genremanager
+        inner join games on fkGameID = games.id
+        inner join genre on fkGenreID = genre.id
+        where genre.name = ?`, [req.params.genreName])
+        db.end();
+        
+        res.render("genre",{
+            page: "View genre: " + req.params.genreName,
+            games: chosenGenre
+        })
+    })
+
+    app.get('/testGenre/:genreName', async (req,res) =>{
+        let db = await mysql.connect();
+        let [chosenGenre] = await db.execute(`SELECT *, games.name as gameName FROM genremanager
+        inner join games on fkGameID = games.id
+        inner join genre on fkGenreID = genre.id
+        where genre.name = ?`, [req.params.genreName])
+        db.end();
+
+        res.send(chosenGenre)
+    })
+
 }
