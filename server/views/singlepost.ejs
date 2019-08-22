@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("partials/head") %>
+</head>
+
+<body>
+    <%- include('partials/header')%>
+    <div id="singlepost_banner" class="banner">
+        <h2 class="pageTitle"><%-page %></h2>
+    </div>
+
+    <div class="wrapper">
+        <% newsPosts.forEach(newsPost => { %>
+        <div class="singlepost-box">
+            <div class="blog-post__right">
+                <img id="single-post__top-img" src="/img/news/<%- newsPost.img %>" alt="">
+            </div>
+            <div class="blo g-post">
+                <a href="/game/<%- newsPost.gamename.replace(/ /g,"_").toLowerCase() %>" id="singlepost_title"
+                    class="blog-post__gametitle"><%- newsPost.gamename%></a>
+                <h1 class="blog-post__header"><%- newsPost.title%></h1>
+                <p class="blog-post__postdate"><%- dateAndTime.format(newsPost.postTime, 'MMMM DD, YYYY HH:mm') %></p>
+                <p class="blog-post__textcontent"><%- newsPost.description%></p>
+            </div>
+        </div>
+        <% }); %>
+
+        <div id="comment-section">
+            <p></p>
+        </div>
+                <div class="commentForm">          
+                    <form id="contact-form" method="post" onsubmit="return" action"" autocomplete="off">
+                        <input name="name" type="text" class="form-control-name" placeholder="Name"><br>
+                        <textarea name="message" class="form-control" placeholder="Comment" rows="8"></textarea><br>
+                        <div class="flexbox" id="send-knap">
+                        <input type="submit" class="button button--gradient" value="SEND">
+                        </div>
+                    </form>
+                </div>
+           </div>
+</div>
+    
+
+    <%- include("partials/footer") %>
+                <%- include('partials/scripts') %>
+</body>
+
+</html>

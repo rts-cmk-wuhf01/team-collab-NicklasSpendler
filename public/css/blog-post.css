@@ -32,3 +32,32 @@
     display: inline-block;
     margin-bottom: .5em;
 }
+
+
+
+
+
+/* Singlepost */
+
+#send-knap{
+    margin-bottom: 1em;
+}
+
+#single-post__top-img{
+    width:100%;
+}
+#singlepost_banner{
+    margin-bottom: 2em;
+}
+#singlepost_title{
+    
+    text-align: center;     
+}
+
+.singlepost-box{
+    padding: 2em 3em 1px;
+    margin-bottom: 2em;
+    background-color: #292945;
+ 
+}
+
