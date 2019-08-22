@@ -21,11 +21,14 @@
 							href="/store/genre/<%- genre.name.toLowerCase().replace(" ","_")%>"><%- genre.name%></a>
 						<% }); %>
 					</div>
-					<p class="gameDate"><%- dateAndTime.format(game.releaseDate, 'MMMM DD, YYYY') %></p>
+					<p class="gameDate">Released: <%- dateAndTime.format(game.releaseDate, 'MMMM DD, YYYY') %></p>
 				</div>
 				<h2 class="gameTitle"><%= game.name %></h2>
 				<p class="gameSummary"><%= game.text %></p>
-				<p class="gamePrice"><%= game.price %></p>
+				<div class="gamePrice">
+					<p>Price: $<%= game.price %></p>
+					<button class="button button--success">BUY</button>
+				</div>
 			</div>
 			<h4 class="gameNews">
 				<div class="news__header">

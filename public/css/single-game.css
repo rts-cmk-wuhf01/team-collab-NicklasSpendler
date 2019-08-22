@@ -23,7 +23,7 @@
 }
 
 .gameCategory {
-	font-size: .8rem;
+	font-size: .9rem;
 	margin: 0 .5rem 0 0;
 }
 
@@ -41,12 +41,11 @@
 .gamePrice {
 	font-weight: bold;
 	margin: auto 0 0 0;
-}
-
-.gamePrice::before {
-	content: "$";
-	font-weight: 300;
-	font-size: 1.1rem;
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid gray;
+	padding: .5em;
+	align-items: center;
 }
 
 .gameNews {
