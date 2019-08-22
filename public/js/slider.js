@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const imageContainer = document.querySelector("#galleryBox");
     const ImageArray = document.querySelectorAll(".gallery_image");
 
-    const size = ImageArray[0].clientWidth;
 
+    const size = imageContainer.clientWidth;
     
 
     for (i = 0; i < ImageArray.length; i++) {
