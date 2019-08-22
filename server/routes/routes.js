@@ -228,34 +228,6 @@ module.exports = (app) => {
         })
     });
 
-    // app.get('/store/genre/:genreName/:sortTime', async(req,res) =>{
-
-    //     console.log('', req.params.genreName, req.params.sortTime)
-
-    //     let db = await mysql.connect();
-
-    //     let [chosenGenre] = await db.execute(`
-    //         SELECT
-    //         *,
-    //         games.id AS gameID,
-    //         games.name AS gameName
-    //         FROM
-    //             genremanager
-    //         INNER JOIN games ON fkGameID = games.id
-    //         INNER JOIN genre ON fkGenreID = genre.id
-    //         WHERE
-    //             genre.name = ?
-    //         ORDER BY
-    //             games.price
-    //         ?
-    //     `,[req.params.genreName, req.params.sortTime])
-
-    //     db.end();
-
-    //     res.send(chosenGenre);
-
-    // })
-
     app.get('/test/sortbar', async(req,res)=>{
 
         let db = await mysql.connect();
