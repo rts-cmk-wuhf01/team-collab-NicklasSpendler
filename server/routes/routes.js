@@ -4,7 +4,15 @@ module.exports = (app) => {
 
     app.get('/', async (req, res) => {
         let db = await mysql.connect();
-        let [newsData] = await db.execute("SELECT title,newsposts.description as description,newsposts.img as img,postTime,games.id as gameid, games.name as gamename FROM newsposts INNER JOIN games on fkGame = games.id ORDER BY postTime DESC")
+        let [newsData] = await db.execute(`SELECT title,
+        newsposts.id as articleID,
+        newsposts.description as description,
+        newsposts.img as img,
+        postTime,games.id as gameid,
+        games.name as gamename
+        FROM newsposts
+        INNER JOIN games on fkGame = games.id 
+        ORDER BY postTime DESC`)
         let GamesNavData = await db.execute(`
         SELECT name,
         id
@@ -40,13 +48,15 @@ module.exports = (app) => {
         SELECT name,
         message
         FROM comments
-        `)
+        WHERE articleFK = ?
+        `, [req.params.articleID])
 
         db.end();
         res.render("singlepost", {
             "newsPosts": newsData,
             page: newsData[0].gamename,
-            "gamesNav": GamesNavData[0]
+            "gamesNav": GamesNavData[0],
+            "comments": comments
         })
     });
 
@@ -54,7 +64,7 @@ module.exports = (app) => {
 
         let contact_name = req.body.name;
         let contact_message = req.body.message;
-        
+
         let db = await mysql.connect();
         let GamesNavData = await db.execute(`
         SELECT name,
@@ -64,12 +74,12 @@ module.exports = (app) => {
         let result = await db.execute(`
           INSERT INTO comments
           SET name = ?, 
-          message = ?
-          INNER JOIN newsposts on commentsFK = newsposts.id , 
-          ` , [contact_name, contact_message]);
+          message = ?,
+          articleFK = ? 
+          ` , [contact_name, contact_message, req.params.articleID]);
         db.end();
 
-        res.redirect("/singlepost/"+req.params.articleID)
+        res.redirect("/singlepost/" + req.params.articleID)
     })
 
 
@@ -250,6 +260,7 @@ module.exports = (app) => {
     app.get('/newsposts/:gameId', async (req, res) => {
         let db = await mysql.connect();
         let [newsData] = await db.execute(`SELECT title,
+        newsposts.id as articleID, 
         newsposts.description as description,
         newsposts.img as img,postTime,
         games.id as gameid, 
