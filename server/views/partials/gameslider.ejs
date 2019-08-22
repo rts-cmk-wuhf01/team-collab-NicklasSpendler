@@ -3,7 +3,6 @@
             <% let lastClone = images.length-1; %>
             <img id ="lastClone" class="gallery_image" src="/img/slider/<%- images[lastClone].src %>" alt="Picture of the game">
         <% images.forEach(image =>{%>
-        <!-- <div class="gallery_image" data-url="/img/slider/<%- image.src %>"></div> -->
             <img class="gallery_image" src="/img/slider/<%- image.src %>" alt="Picture of the game">
         <%}) %>
         <img id ="firstClone" class="gallery_image" src="/img/slider/<%- images[0].src %>" alt="Picture of the game">
