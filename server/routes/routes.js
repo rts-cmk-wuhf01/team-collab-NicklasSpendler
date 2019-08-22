@@ -246,4 +246,40 @@ module.exports = (app) => {
         })
     });
 
+    app.get('/store/genre/:genreName', async(req,res) =>{
+
+        let genreName = req.params.genreName;
+        genreName = genreName.replace(/_/g," ")
+
+        let db = await mysql.connect();
+        let [chosenGenre] = await db.execute(`SELECT *, games.id as gameID, games.name as gameName FROM genremanager
+        inner join games on fkGameID = games.id
+        inner join genre on fkGenreID = genre.id
+        where genre.name = ?`, [genreName])
+
+        let gamesCounter = 0;
+        
+        chosenGenre.forEach( async (game, index)  => {
+            game.genres = [];
+            let [genreData] = await db.execute(`SELECT genre.name, genre.id FROM genremanager
+            INNER join genre on fkGenreID = genre.id
+            inner join games on fkGameID = games.id
+            where games.id = ?`, [game.gameID])
+            genreData.forEach(genre => {
+                game.genres.push(genre);
+            });
+            gamesCounter++;
+            if(gamesCounter == chosenGenre.length){
+                renderGenrePage()
+            }
+        });
+        db.end();
+
+        function renderGenrePage() {
+            res.render("genre", {
+                games: chosenGenre,
+                page: "View genre: " + req.params.genreName
+            })
+        }
+    })
 }

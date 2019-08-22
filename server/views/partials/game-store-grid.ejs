@@ -15,8 +15,6 @@
         <div class="grid-games">
 
             <% games.forEach(game => { %>
-
-
             <div class="single-grid-box">
                 <a href="/game/<%- game.name.replace(/ /g,"_").toLowerCase()%>"><div class="grid-box-img">
                     <img src="/img/games/<%- game.img%>" alt="">
