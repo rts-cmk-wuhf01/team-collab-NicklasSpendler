@@ -64,22 +64,29 @@ module.exports = (app) => {
         SELECT name,
         id
         FROM games
-          `)
-          let [images] = await db.execute(`
-          SELECT src, 
-          games.id
-          FROM images
-          INNER JOIN games on gameFK = games.id
-          WHERE gameFK = ?
-          `, [req.params.game_id])
+        `)
+        let [images] = await db.execute(`
+        SELECT src, 
+        games.id
+        FROM images
+        INNER JOIN games on gameFK = games.id
+        WHERE gameFK = ?
+        `, [req.params.game_id])
+
+        let [genreData] = await db.execute(`SELECT genre.name FROM genremanager
+        INNER join genre on fkGenreID = genre.id
+        inner join games on fkGameID = games.id
+        where games.id = ?`, [req.params.game_id])
+
         db.end();
-       
+        
         res.render("single-game", {
             game: gameData[0],
             articles: newsData,
             page: gameData[0].name,
             "gamesNav": GamesNavData[0],
-            "images":images
+            "images":images,
+            genres: genreData
         });
     });
 

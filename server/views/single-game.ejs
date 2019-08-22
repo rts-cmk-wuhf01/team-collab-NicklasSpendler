@@ -14,12 +14,16 @@
 
 		<div id="gameContainer">
 			<div class="gameInfo">
-				<div class="gameCategories">
-					<a href="#" class="gameCategory">Kategori 1</a>
-					<a href="#" class="gameCategory">Kategori 2</a>
+				<div class="gameCategoriesandDate">
+					<div>
+						<% genres.forEach(genre => { %>
+						<a class="gameCategory"
+							href="/store/genre/<%- genre.name.toLowerCase().replace(" ","_")%>"><%- genre.name%></a>
+						<% }); %>
+					</div>
+					<p class="gameDate"><%- dateAndTime.format(game.releaseDate, 'MMMM DD, YYYY') %></p>
 				</div>
-				<p class="gameDate"><%- dateAndTime.format(game.releaseDate, 'MMMM DD, YYYY') %></p>
-				<h3 class="gameTitle"><%= game.name %></h3>
+				<h2 class="gameTitle"><%= game.name %></h2>
 				<p class="gameSummary">Dinosaurs, Creatures, & Breeding! -- over 100+ creatures can be tamed using a
 					challenging capture-&-affinity process, involving weakening a feral creature to knock it
 					unconscious, and then nursing it back to health with appropriate food. Once tamed, you can issue
@@ -36,24 +40,26 @@
 					lifecycles! Or put more simply, raise babies!</p>
 				<p class="gamePrice"><%= game.price %></p>
 			</div>
-			<div class="gameNews">
-				<h4 class="newsTitle">Latest News about <%= game.name %></h3>
-					<a href="#" class="allNews">All News</a>
-					<% articles.forEach(article => { %>
-					<div class="newsArticle">
-						<div class="articleLeft">
-							<p class="articleTitle"><%= article.title %></p>
-							<p class="articleDate"><%- dateAndTime.format(article.postTime, 'MMMM DD, YYYY HH:mm') %>
-							</p>
-							<a href="#" class="articleLink">Full Article</a>
-						</div>
-						<div class="articleRight">
-							<img src="/img/games/<%= game.img %>" class="articleImage">
-						</div>
+			<h4 class="gameNews">
+				<div class="news__header">
+					<h4 class="newsTitle">Latest <%= game.name %> News</h4>
+					<a href="/newsPosts/<%= game.id %>" class="allNews">All <%= game.name %> News</a>
+				</div>
+				<% articles.forEach(article => { %>
+				<div class="newsArticle">
+					<div class="articleLeft">
+						<p class="articleTitle"><%= article.title %></p>
+						<p class="articleDate"><%- dateAndTime.format(article.postTime, 'MMMM DD, YYYY HH:mm') %>
+						</p>
+						<a href="#" class="articleLink">Full Article</a>
 					</div>
-					<% }) %>
-			</div>
+					<div class="articleRight">
+						<img src="/img/games/<%= game.img %>" class="articleImage">
+					</div>
+				</div>
+				<% }) %>
 		</div>
+	</div>
 
 	</div>
 	<%- include("partials/footer") %>
