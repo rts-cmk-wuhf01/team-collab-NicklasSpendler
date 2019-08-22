@@ -99,3 +99,93 @@
  :-ms-input-placeholder {  
 	font-style: italic; 
  }
+
+ /* comments */ 
+
+#commentsForm {
+	display:flex;
+
+}
+
+
+.flexbox{
+    display:flex;
+}
+
+.flex1{
+    flex:1;
+}
+.flex2{
+    flex:2;
+}
+.flex3{
+    flex:3;
+}
+
+#commentForm{
+	margin: 0 auto;
+	width:60%;
+	background-color:#2a353f;
+	padding: 5% 5%;
+	border-radius: 10px;
+	
+}
+.form-control {
+	width:50%;
+	border: 2px solid rgba(255,255,255,0.05);
+	border-radius: 10px;
+	outline:none;
+	padding: 2%;
+	font-size: 12px;
+	margin-bottom:1vh;
+	cursor:text;
+	background-color: #292945;
+	color:#fff;
+	
+	
+}
+
+textarea::placeholder{
+	cursor:text;
+	height:3vh;
+	font-family: 'Open Sans', sans-serif;
+	color:#a2b1bf;
+	padding:2px;
+	
+}
+
+input::placeholder{
+
+font-family: 'Open Sans', sans-serif;
+
+}
+
+form .submit {
+	font-family: 'Open Sans', sans-serif;
+	padding-left:1.5%;
+	border:none;
+	width:20%;
+	color:#FFF;
+	font-size:16px;
+	font-weight: 400;
+	background-color: #292945;
+	text-align: left;
+}
+
+.fa-envelope{
+	color:#fff;
+	font-size:1.5em;
+	padding-top: 1px;
+	
+}
+
+#send_knap{
+	text-align: right;
+	width:10%;
+	border-radius: 10px;
+	outline:none;
+	padding: 2%;
+	font-size: 12px;
+	margin-bottom:1vh;
+	cursor:text;
+}

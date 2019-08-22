@@ -19,17 +19,17 @@ module.exports = (app) => {
         })
     });
 
-    app.get('singlepost/:articleName', async (req, res) => {
+    app.get('/singlepost/:articleID', async (req, res) => {
         let db = await mysql.connect();
         let [newsData] = await db.execute(`SELECT title,
         newsposts.text as description,
-        newsposts.img as img,
-        postTime,games.id as gameid,
-         games.name as gamename 
-         FROM newsposts 
-         INNER JOIN games on fkGame = games.id 
-         WHERE newsposts.id = ?
-         `, [req.params.articleName])
+        newsposts.img as img,postTime,
+        games.id as gameid,
+        games.name as gamename 
+        FROM newsposts
+        INNER JOIN games on fkGame = games.id
+        WHERE newsposts.id = ?
+         `, [req.params.articleID])
         let GamesNavData = await db.execute(`
         SELECT name,
         id
@@ -37,7 +37,7 @@ module.exports = (app) => {
           `)
 
         db.end();
-        res.render("home", {
+        res.render("singlepost", {
             "newsPosts": newsData,
             page: "Home",
             "gamesNav": GamesNavData[0]
