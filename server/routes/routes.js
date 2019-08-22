@@ -246,7 +246,6 @@ module.exports = (app) => {
                 renderGenrePage()
             }
         });
-
         db.end();
 
         function renderGenrePage() {
