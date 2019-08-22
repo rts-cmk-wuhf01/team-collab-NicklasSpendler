@@ -18,8 +18,15 @@ module.exports = (app) => {
             "gamesNav": GamesNavData[0]
         })
     });
+
+
+
+
     app.get('/store', async (req, res) => {
         let db = await mysql.connect();
+
+        let [genres] = await db.execute("SELECT * FROM genre")
+
         let [gamesData] = await db.execute("SELECT * FROM games ORDER BY releaseDate DESC")
         let GamesNavData = await db.execute(`
         SELECT name,
@@ -49,7 +56,8 @@ module.exports = (app) => {
             res.render("store", {
                 "games": gamesData,
                 page: "Store",
-                "gamesNav": GamesNavData[0]
+                "gamesNav": GamesNavData[0],
+                allGenres: genres
             })
         }
 
@@ -220,19 +228,71 @@ module.exports = (app) => {
         })
     });
 
+    // app.get('/store/genre/:genreName/:sortTime', async(req,res) =>{
+
+    //     console.log('', req.params.genreName, req.params.sortTime)
+
+    //     let db = await mysql.connect();
+
+    //     let [chosenGenre] = await db.execute(`
+    //         SELECT
+    //         *,
+    //         games.id AS gameID,
+    //         games.name AS gameName
+    //         FROM
+    //             genremanager
+    //         INNER JOIN games ON fkGameID = games.id
+    //         INNER JOIN genre ON fkGenreID = genre.id
+    //         WHERE
+    //             genre.name = ?
+    //         ORDER BY
+    //             games.price
+    //         ?
+    //     `,[req.params.genreName, req.params.sortTime])
+
+    //     db.end();
+
+    //     res.send(chosenGenre);
+
+    // })
+
+    app.get('/test/sortbar', async(req,res)=>{
+
+        let db = await mysql.connect();
+
+        let [genres] = await db.execute("SELECT * FROM genre")
+
+        db.end();
+
+        res.send(genres)
+
+
+    })
+
     app.get('/store/genre/:genreName', async(req,res) =>{
 
         let genreName = req.params.genreName;
         genreName = genreName.replace(/_/g," ")
-
+        
         let db = await mysql.connect();
+
+        let [genres] = await db.execute("SELECT * FROM genre")
+
+        let GamesNavData = await db.execute(`
+        SELECT name,
+        id
+        FROM games
+        `)
+
         let [chosenGenre] = await db.execute(`SELECT *, games.id as gameID, games.name as gameName FROM genremanager
         inner join games on fkGameID = games.id
         inner join genre on fkGenreID = genre.id
         where genre.name = ?`, [genreName])
 
         let gamesCounter = 0;
-        
+        if(chosenGenre.length == 0){
+            renderGenrePage()
+        }
         chosenGenre.forEach( async (game, index)  => {
             game.genres = [];
             let [genreData] = await db.execute(`SELECT genre.name, genre.id FROM genremanager
@@ -243,16 +303,21 @@ module.exports = (app) => {
                 game.genres.push(genre);
             });
             gamesCounter++;
+
             if(gamesCounter == chosenGenre.length){
                 renderGenrePage()
             }
         });
+        
         db.end();
+        console.log(chosenGenre)
 
         function renderGenrePage() {
             res.render("genre", {
                 games: chosenGenre,
-                page: "View genre: " + req.params.genreName
+                page: "Genre: " + req.params.genreName,
+                "gamesNav": GamesNavData[0],
+                allGenres: genres
             })
         }
     })

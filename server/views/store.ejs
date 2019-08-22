@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include("partials/head") %>
 </head>
+
 <body>
     <%- include('partials/header')%>
     <%- include('partials/underside-banner')%>
 
-    <%- include('partials/game-store-grid')%>
+    <div class="wrapper">
+
+        <%- include('partials/sortbar')%>
+
+        <%- include('partials/game-store-grid')%>
+
+    </div>
 
     <%- include('partials/footer')%>
     <%- include('partials/scripts') %>
 </body>
+
 </html>
