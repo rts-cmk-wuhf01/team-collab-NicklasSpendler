@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Vært: 127.0.0.1
--- Genereringstid: 21. 08 2019 kl. 19:30:57
--- Serverversion: 10.1.30-MariaDB
--- PHP-version: 7.2.1
+-- Host: 127.0.0.1
+-- Generation Time: Aug 22, 2019 at 11:25 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `contactmessages`
+-- Table structure for table `contactmessages`
 --
 
 CREATE TABLE `contactmessages` (
@@ -39,7 +39,7 @@ CREATE TABLE `contactmessages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Data dump for tabellen `contactmessages`
+-- Dumping data for table `contactmessages`
 --
 
 INSERT INTO `contactmessages` (`id`, `name`, `email`, `phone`, `subject`, `message`, `contactTime`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `contactmessages` (`id`, `name`, `email`, `phone`, `subject`, `messa
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `games`
+-- Table structure for table `games`
 --
 
 CREATE TABLE `games` (
@@ -59,25 +59,26 @@ CREATE TABLE `games` (
   `img` varchar(256) NOT NULL,
   `price` int(11) NOT NULL,
   `description` varchar(350) NOT NULL,
+  `text` text NOT NULL,
   `releaseDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Data dump for tabellen `games`
+-- Dumping data for table `games`
 --
 
-INSERT INTO `games` (`id`, `name`, `img`, `price`, `description`, `releaseDate`) VALUES
-(1, 'ARK: Survival Evolved', 'ark.jpg', 55, ' Stranded on the shores of a mysterious island, you must learn to survive. Use your cunning to kill or tame the primeval creatures roaming the land, and encounter other players to survive, dominate... and escape. ', '2017-08-27'),
-(2, 'Remnant: From the Ashes', 'remnant.jpg', 40, 'The world has been thrown into chaos by an ancient evil from another dimension. As one of the last remnants of humanity, you must set out alone or alongside up to two other survivors to face down hordes of deadly enemies to try to carve a foothold, rebuild, and retake what was lost.', '2019-08-20'),
-(3, 'DARQ', 'darq.jpg', 17, 'DARQ tells the story of Lloyd, a boy who becomes aware of the fact that he is dreaming. The dream quickly turns into a nightmare and all attempts to wake up end in failure. Lloyd learns how to survive the nightmare by bending the laws of physics and manipulating the fluid fabric of the dream world.', '2019-08-15'),
-(4, 'Crysis 2', 'crysis2.jpg', 20, 'Aliens are decimating New York City, only you have the technology to survive. Be The Weapon.', '2011-03-22'),
-(5, 'The Witcher 3', 'the_witcher_3.jpg', 30, 'As war rages on throughout the Northern Realms, you take on the greatest contract of your life — tracking down the Child of Prophecy, a living weapon that can alter the shape of the world.', '2015-05-18'),
-(6, 'Assassin\'s Creed Odyssey', 'assassins_creed_odyssey.jpg', 60, 'Choose your fate in Assassin\'s Creed® Odyssey. From outcast to living legend, embark on an odyssey to uncover the secrets of your past and change the fate of Ancient Greece.', '2018-10-05');
+INSERT INTO `games` (`id`, `name`, `img`, `price`, `description`, `text`, `releaseDate`) VALUES
+(1, 'ARK: Survival Evolved', 'ark.jpg', 55, 'The world has been thrown into chaos by an ancient evil from another dimension. As one of the last remnants of humanity, you must set out alone or alongside up to two other survivors to face down hordes of deadly enemies to try to carve a foothold, rebuild, and retake what was lost.', 'Dinosaurs, Creatures, & Breeding! -- over 100+ creatures can be tamed using a challenging capture-&-affinity process, involving weakening a feral creature to knock it unconscious, and then nursing it back to health with appropriate food. Once tamed, you can issue commands to your tames, which it may follow depending on how well you’ve tamed and trained it. Tames, which can continue to level-up and consume food, can also carry Inventory and Equipment such as Armor, carry prey back to your settlement depending on their strength, and larger tames can be ridden and directly controlled! Fly a Pterodactyl over the snow-capped mountains, lift allies over enemy walls, race through the jungle with a pack of Raptors, tromp through an enemy base along a gigantic brontosaurus, or chase down prey on the back of a raging T-Rex! Take part in a dynamic ecosystem life-cycle with its own predator & prey hierarchies, where you are just one creature among many species struggling for dominance and survival. Tames can also be mated with the opposite gender, to selectively breed successive generations using a trait system based on recombinant genetic inheritance. This process includes both egg-based incubation and mammalian gestation lifecycles! Or put more simply, raise babies!', '2017-08-27'),
+(2, 'Remnant: From the Ashes', 'remnant.jpg', 40, 'The world has been thrown into chaos by an ancient evil from another dimension. As one of the last remnants of humanity, you must set out alone or alongside up to two other survivors to face down hordes of deadly enemies to try to carve a foothold, rebuild, and retake what was lost.', 'Remnant: From the Ashes is a third-person survival action shooter set in a post-apocalyptic world overrun by monstrous creatures. As one of the last remnants of humanity, you’ll set out alone or alongside up to two other players to face down hordes of deadly enemies and epic bosses, and try to carve a foothold, rebuild, and then retake what was lost.  A REMNANT OF MANKIND The world has been thrown into chaos by an ancient evil from another dimension. Humanity is struggling to survive, but they possess the technology to open portals to other realms and alternate realities. They must travel through these portals to uncover the mystery of where the evil came from, scavenge resources to stay alive, and fight back to carve out a foothold for mankind to rebuild...', '2019-08-20'),
+(3, 'DARQ', 'darq.jpg', 17, 'DARQ tells the story of Lloyd, a boy who becomes aware of the fact that he is dreaming. The dream quickly turns into a nightmare and all attempts to wake up end in failure. Lloyd learns how to survive the nightmare by bending the laws of physics and manipulating the fluid fabric of the dream world.', 'HELP LLOYD WAKE UP!  DARQ tells the story of Lloyd, a boy who becomes aware of the fact that he is dreaming. To Lloyd\'s misfortune, the dream quickly turns into a nightmare and all attempts to wake up end in failure. While exploring the darkest corners of his subconscious, Lloyd learns how to survive the nightmare by bending the laws of physics and manipulating the fluid fabric of the dream world. WALL WALK, STEALTH, PUZZLES  Apart from gravity-defying puzzles, Lloyd will have to use stealth when nearby enemies. He has no chance of winning in an open confrontation, since the creatures he will encounter are much more powerful and faster than him. Instead, he has to rely on careful planning to avoid getting detected.', '2019-08-15'),
+(4, 'Crysis 2', 'crysis2.jpg', 20, 'Aliens are decimating New York City, only you have the technology to survive. Be The Weapon.', 'Aliens are decimating New York City, only you have the technology to survive. Adapt in real time using the unique Nanosuit 2 Stealth, Armor and Power abilities, then tackle the alien menace in ways a regular soldier could only dream of. Crysis 2 redefines the visual benchmark for console and PC platforms in the urban jungle of NYC. Be The Weapon.', '2011-03-22'),
+(5, 'The Witcher 3', 'the_witcher_3.jpg', 30, 'As war rages on throughout the Northern Realms, you take on the greatest contract of your life — tracking down the Child of Prophecy, a living weapon that can alter the shape of the world.', 'The Witcher: Wild Hunt is a story-driven open world RPG set in a visually stunning fantasy universe full of meaningful choices and impactful consequences. In The Witcher, you play as professional monster hunter Geralt of Rivia tasked with finding a child of prophecy in a vast open world rich with merchant cities, pirate islands, dangerous mountain passes, and forgotten caverns to explore. KEY FEATURES PLAY AS A HIGHLY TRAINED MONSTER SLAYER FOR HIRE Trained from early childhood and mutated to gain superhuman skills, strength and reflexes, witchers are a counterbalance to the monster-infested world in which they live.', '2015-05-18'),
+(6, 'Assassin\'s Creed Odyssey', 'assassins_creed_odyssey.jpg', 60, 'Choose your fate in Assassin\'s Creed® Odyssey. From outcast to living legend, embark on an odyssey to uncover the secrets of your past and change the fate of Ancient Greece.', 'Assassin\'s Creed Odyssey is an action role-playing video game developed by Ubisoft Quebec and published by Ubisoft. It is the 11th major installment, and 21st overall, in the Assassin\'s Creed series and the successor to 2017\'s Assassin\'s Creed Origins. Set in the year 431 BC, the plot tells a fictional history of the Peloponnesian War between Athens and Sparta. Players control a male or female mercenary (Ancient Greek: μίσθιος misthios) who fights for both sides as they attempt to unite their family and uncover a malign cult. ', '2018-10-05');
 
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `genre`
+-- Table structure for table `genre`
 --
 
 CREATE TABLE `genre` (
@@ -86,7 +87,7 @@ CREATE TABLE `genre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Data dump for tabellen `genre`
+-- Dumping data for table `genre`
 --
 
 INSERT INTO `genre` (`id`, `name`) VALUES
@@ -100,7 +101,7 @@ INSERT INTO `genre` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `genremanager`
+-- Table structure for table `genremanager`
 --
 
 CREATE TABLE `genremanager` (
@@ -110,7 +111,7 @@ CREATE TABLE `genremanager` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Data dump for tabellen `genremanager`
+-- Dumping data for table `genremanager`
 --
 
 INSERT INTO `genremanager` (`id`, `fkGameID`, `fkGenreID`) VALUES
@@ -130,7 +131,7 @@ INSERT INTO `genremanager` (`id`, `fkGameID`, `fkGenreID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `images`
+-- Table structure for table `images`
 --
 
 CREATE TABLE `images` (
@@ -140,7 +141,7 @@ CREATE TABLE `images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Data dump for tabellen `images`
+-- Dumping data for table `images`
 --
 
 INSERT INTO `images` (`id`, `src`, `gameFK`) VALUES
@@ -178,7 +179,7 @@ INSERT INTO `images` (`id`, `src`, `gameFK`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `newsposts`
+-- Table structure for table `newsposts`
 --
 
 CREATE TABLE `newsposts` (
@@ -191,7 +192,7 @@ CREATE TABLE `newsposts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Data dump for tabellen `newsposts`
+-- Dumping data for table `newsposts`
 --
 
 INSERT INTO `newsposts` (`id`, `title`, `description`, `img`, `postTime`, `fkGame`) VALUES
@@ -203,80 +204,81 @@ INSERT INTO `newsposts` (`id`, `title`, `description`, `img`, `postTime`, `fkGam
 (6, 'Community Crunch 194: Genesis, Public Beta, and On The Horizon', 'Last week we introduced a new chapter in the ARK saga: Genesis.  By purchasing the season pass, you obtain a brand new H.L.N.A companion.  Are you enjoying H.L.N.A.\'s company on your adventures?  Genesis will be a brand new experience for old and new players alike.  Check out our live stream if you\'re looking for more details on what to expect! ', 'ark_news1.jpg', '2019-08-12 00:00:00', 1);
 
 --
--- Begrænsninger for dumpede tabeller
+-- Indexes for dumped tables
 --
 
 --
--- Indeks for tabel `games`
+-- Indexes for table `games`
 --
 ALTER TABLE `games`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indeks for tabel `genre`
+-- Indexes for table `genre`
 --
 ALTER TABLE `genre`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks for tabel `genremanager`
+-- Indexes for table `genremanager`
 --
 ALTER TABLE `genremanager`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks for tabel `images`
+-- Indexes for table `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id`),
   ADD KEY `gameFK` (`gameFK`);
 
 --
--- Indeks for tabel `newsposts`
+-- Indexes for table `newsposts`
 --
 ALTER TABLE `newsposts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Brug ikke AUTO_INCREMENT for slettede tabeller
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- Tilføj AUTO_INCREMENT i tabel `games`
+-- AUTO_INCREMENT for table `games`
 --
 ALTER TABLE `games`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Tilføj AUTO_INCREMENT i tabel `genre`
+-- AUTO_INCREMENT for table `genre`
 --
 ALTER TABLE `genre`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Tilføj AUTO_INCREMENT i tabel `genremanager`
+-- AUTO_INCREMENT for table `genremanager`
 --
 ALTER TABLE `genremanager`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- Tilføj AUTO_INCREMENT i tabel `images`
+-- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- Tilføj AUTO_INCREMENT i tabel `newsposts`
+-- AUTO_INCREMENT for table `newsposts`
 --
 ALTER TABLE `newsposts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Begrænsninger for dumpede tabeller
+-- Constraints for dumped tables
 --
 
 --
--- Begrænsninger for tabel `images`
+-- Constraints for table `images`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`gameFK`) REFERENCES `games` (`id`);
