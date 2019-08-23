@@ -40,9 +40,9 @@
             <% }) %>
         </div>
         <div class="commentForm">
-            <form id="contact-form" method="post" onsubmit="return" action"" autocomplete="off">
-                <input name="name" type="text" class="form-control-name" placeholder="Name"><br>
-                <textarea name="message" class="form-control" placeholder="Comment" rows="8"></textarea><br>
+            <form id="commentSection" method="post" onsubmit="return" action"" autocomplete="off">
+                <input id ="commentName" name="name" type="text" class="form-control-name" placeholder="Name"><br>
+                <textarea id="commentMessage" name="message" class="form-control" placeholder="Comment" rows="8"></textarea><br>
                 <div class="flexbox" id="send-knap">
                     <input type="submit" class="button button--gradient" value="SEND">
                 </div>
@@ -53,6 +53,7 @@
 
 
     <%- include("partials/footer") %>
+    <script src="/js/comment.js"></script>
     <%- include('partials/scripts') %>
 </body>
 

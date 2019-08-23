@@ -71,4 +71,9 @@ contactForm.addEventListener("submit", (event) => {
 		});
 		errorMessage = [];
 	}
+
+
+
+
 });
+
