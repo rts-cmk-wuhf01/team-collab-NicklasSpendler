@@ -329,7 +329,7 @@ module.exports = (app) => {
         function renderGenrePage() {
             res.render("genre", {
                 games: chosenGenre,
-                page: "View genre: " + req.params.genreName,
+                page: "View genre: " + chosenGenre[0].name,
                 allGenres: genres,
                 "gamesNav": GamesNavData[0]
             })
