@@ -94,7 +94,7 @@ module.exports = (app) => {
         `);
 
         let gamesCounter = 0;
-
+        let [genres] = await db.execute("SELECT * FROM genre")
         gamesData.forEach(async (game, index) => {
             game.genres = [];
             let [genreData] = await db.execute(`SELECT genre.name, genre.id FROM genremanager
@@ -115,7 +115,8 @@ module.exports = (app) => {
             res.render("store", {
                 "games": gamesData,
                 page: "Store",
-                "gamesNav": GamesNavData[0]
+                "gamesNav": GamesNavData[0],
+                allGenres: genres
             })
         }
 
@@ -128,7 +129,7 @@ module.exports = (app) => {
         console.log(gamename)
         let db = await mysql.connect();
         let [gameData] = await db.execute("SELECT * FROM games WHERE name = ?", [gamename]);
-        let [newsData] = await db.execute("SELECT *,newsposts.id as articleID, FROM newsposts INNER JOIN games on fkGame = games.id WHERE games.name = ?  ORDER BY postTime DESC LIMIT 3", [gamename]);
+        let [newsData] = await db.execute("SELECT *,newsposts.id as articleID FROM newsposts INNER JOIN games on fkGame = games.id WHERE games.name = ?  ORDER BY postTime DESC LIMIT 3", [gamename]);
         let GamesNavData = await db.execute(`
         SELECT name,
         id
@@ -293,6 +294,7 @@ module.exports = (app) => {
         genreName = genreName.replace(/_/g, " ")
 
         let db = await mysql.connect();
+        let [genres] = await db.execute("SELECT * FROM genre")
         let [chosenGenre] = await db.execute(`SELECT *, games.id as gameID, games.name as gameName FROM genremanager
         inner join games on fkGameID = games.id
         inner join genre on fkGenreID = genre.id
@@ -315,11 +317,15 @@ module.exports = (app) => {
             }
         });
         db.end();
+        if(gamesCounter == chosenGenre.length){
+            renderGenrePage()
+        }
 
         function renderGenrePage() {
             res.render("genre", {
                 games: chosenGenre,
-                page: "View genre: " + req.params.genreName
+                page: "View genre: " + req.params.genreName,
+                allGenres: genres
             })
         }
     })
