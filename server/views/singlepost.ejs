@@ -28,23 +28,32 @@
         <% }); %>
 
         <div id="comment-section">
-            <p></p>
+            <% comments.forEach(comment => { %>
+            <div class="commentBox">
+                <div class="flexbox">
+                        <i class="far fa-user"></i>
+                <p class="user_name"><%- comment.name %>'s comment</p>
+                </div>   
+                <p class="comment_message"> <%- comment.message %> </p>
+            </div>
+
+            <% }) %>
         </div>
-                <div class="commentForm">          
-                    <form id="contact-form" method="post" onsubmit="return" action"" autocomplete="off">
-                        <input name="name" type="text" class="form-control-name" placeholder="Name"><br>
-                        <textarea name="message" class="form-control" placeholder="Comment" rows="8"></textarea><br>
-                        <div class="flexbox" id="send-knap">
-                        <input type="submit" class="button button--gradient" value="SEND">
-                        </div>
-                    </form>
+        <div class="commentForm">
+            <form id="contact-form" method="post" onsubmit="return" action"" autocomplete="off">
+                <input name="name" type="text" class="form-control-name" placeholder="Name"><br>
+                <textarea name="message" class="form-control" placeholder="Comment" rows="8"></textarea><br>
+                <div class="flexbox" id="send-knap">
+                    <input type="submit" class="button button--gradient" value="SEND">
                 </div>
-           </div>
-</div>
-    
+            </form>
+        </div>
+    </div>
+    </div>
+
 
     <%- include("partials/footer") %>
-                <%- include('partials/scripts') %>
+    <%- include('partials/scripts') %>
 </body>
 
 </html>
