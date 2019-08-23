@@ -299,6 +299,11 @@ module.exports = (app) => {
         inner join games on fkGameID = games.id
         inner join genre on fkGenreID = genre.id
         where genre.name = ?`, [genreName])
+        let GamesNavData = await db.execute(`
+        SELECT name,
+        id
+        FROM games
+        `)
 
         let gamesCounter = 0;
 
@@ -325,7 +330,8 @@ module.exports = (app) => {
             res.render("genre", {
                 games: chosenGenre,
                 page: "View genre: " + req.params.genreName,
-                allGenres: genres
+                allGenres: genres,
+                "gamesNav": GamesNavData[0]
             })
         }
     })
