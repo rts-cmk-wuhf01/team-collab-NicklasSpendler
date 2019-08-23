@@ -306,7 +306,12 @@ module.exports = (app) => {
         `)
 
         let gamesCounter = 0;
-
+        let page;
+        if(chosenGenre.length > 0){
+            page = chosenGenre;
+        }else{
+            [page] = await db.execute(`select name from genre where name = ?`, [genreName])
+        }
         chosenGenre.forEach(async (game, index) => {
             game.genres = [];
             let [genreData] = await db.execute(`SELECT genre.name, genre.id FROM genremanager
@@ -321,15 +326,18 @@ module.exports = (app) => {
                 renderGenrePage()
             }
         });
+
+        
         db.end();
         if(gamesCounter == chosenGenre.length){
             renderGenrePage()
         }
+        
 
         function renderGenrePage() {
             res.render("genre", {
                 games: chosenGenre,
-                page: "View genre: " + chosenGenre[0].name,
+                page: "View genre: " + page[0].name,
                 allGenres: genres,
                 "gamesNav": GamesNavData[0]
             })
